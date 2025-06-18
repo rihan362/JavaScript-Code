@@ -1,0 +1,105 @@
+#code 1
+
+const today = new Date();
+const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+let day = days[today.getDay()];
+let hour = today.getHours();
+let minute = today.getMinutes();
+let second = today.getSeconds();
+let prepand = (hour >= 12) ? "PM" : "AM";
+hour = (hour > 12) ? hour - 12 : hour;
+
+console.log(`Today is : ${day}.`);
+console.log(`Current time is : ${hour} ${prepand} : ${minute} : ${second}`);
+
+
+#code 2
+
+function printWindow() {
+  window.print();
+}
+
+
+code 3
+const today = new Date();
+const dd = String(today.getDate()).padStart(2, '0');
+const mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0
+const yyyy = today.getFullYear();
+
+console.log(`${mm}-${dd}-${yyyy}`);
+console.log(`${mm}/${dd}/${yyyy}`);
+console.log(`${dd}-${mm}-${yyyy}`);
+console.log(`${dd}/${mm}/${yyyy}`);
+
+code 4
+
+let a = 5, b = 6, c = 7;
+let s = (a + b + c) / 2;
+let area = Math.sqrt(s * (s - a) * (s - b) * (s - c));
+console.log("Area of triangle:", area);
+
+
+code 5
+
+function rotateStringRight(str) {
+  let text = str;
+
+  console.log("Original: " + text);
+
+
+  setInterval(function () {
+
+    let lastChar = text.charAt(text.length - 1);
+
+    text = lastChar + text.slice(0, text.length - 1);
+    console.log("Rotation: " + text);
+  }, 1000);
+}
+
+// Call the function
+rotateStringRight("w3resource");
+
+
+code 6
+let num = Math.ceil(Math.random() * 10);
+let guess = prompt('Guess a number between 1 and 10');
+if (parseInt(guess) === num) {
+  alert("Good Work");
+} else {
+  alert(`Not matched. The number was ${num}`);
+}
+ code 7
+
+function convertCtoF(c) {
+  return (c * 9/5) + 32;
+}
+
+function convertFtoC(f) {
+  return (f - 32) * 5/9;
+}
+
+console.log("60°C is", convertCtoF(60), "°F");
+console.log("45°F is", convertFtoC(45), "°C");
+
+
+code 8
+
+console.log(window.location.href);
+
+code 9
+
+function reverseNumber(n) {
+  return parseInt(n.toString().split('').reverse().join(''));
+}
+console.log(reverseNumber(32243)); // 34223
+
+
+code 10
+
+function alphabetical(str) {
+  return str.split('').sort().join('');
+}
+console.log(alphabetical("webmaster")); // 'abeemrstw'
+
+
