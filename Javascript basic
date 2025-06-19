@@ -103,3 +103,36 @@ function alphabetical(str) {
 console.log(alphabetical("webmaster")); // 'abeemrstw'
 
 
+code 11
+
+function combination(str)
+{
+    let result=[];
+    for(let i=0;i<str.length;i++)
+    {
+        for(let j=i+1;j<=str.length-1;j++)
+        {
+            result.push(str.slice(i,j));
+        }
+    }
+    return result;
+}
+
+console.log(combination("rihan"))
+
+
+code 12
+
+
+function calculate(num1,num2)
+{
+    const multiply=num1*num2;
+    const division=num2!==0? (num1/num2):"cannot divide by zero";
+    
+    console.log(`Multiplication of ${num1} and ${num2} is: ${multiplication}`);
+    console.log(`Division of ${num1} and ${num2} is ${division}`);
+}
+
+calculate(10,5);
+
+
