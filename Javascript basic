@@ -350,6 +350,542 @@ function uniquechar(str)
 uniquechar("thequickbrownfoxjumpsoverthelazydog");
 
 
+#code 24-count occurence
+
+function countletter(str)
+{
+    let lettercount={};
+    
+    for(let char of str)
+    {
+        if(char.match(/[a-z]/i))
+        {
+            char=char.toLowerCase();
+            
+            
+            if(lettercount[char])
+            {
+                lettercount[char]++;
+            }
+            else
+            {
+                lettercount[char]=1;
+            }
+        }
+    }
+    
+    return lettercount;
+    
+}
+
+console.log(countletter("rihann"));
+
+#code 25-binary search
+
+function binary(arr,target)
+{
+    let left=0;
+    let right=arr.length-1;
+    
+    while(left<right)
+    {
+        let mid=Math.floor((left+right)/2);
+        
+        if(arr[mid]==target)
+        {
+            return mid;
+        }
+        else if(arr[mid]>target)
+        {
+            right=mid-1;
+            
+        }
+        else
+        {
+            left=mid+1;
+        }
+        
+        
+    }
+    return -1;
+    
+}
+
+
+const ans=binary([1,2,3,4,5,6,7,8],6);
+console.log(ans);
+
+
+#code 26
+function larger(arr,num)
+{
+    let result=[];
+    for(var i=0;i<arr.length;i++)
+    {
+        if(arr[i]>num)
+        {
+            result.push(arr[i]);
+        }
+        
+    }
+    
+    return result;
+}
+
+const ans=larger([2,3,4,5,6,1],4);
+console.log(ans);
+
+code 27
+
+function generate(len)
+{
+    const char="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let id="";
+    
+    for(let i=0;i<len;i++)
+    {
+        const randomindex=Math.floor(Math.random()*char.length);
+        id+=char[randomindex];
+    }
+    
+    return id;
+}
+
+console.log(generate(10)); 
+
+#code 28 -> count letters
+
+// Online Javascript Editor for free
+// Write, Edit and Run your Javascript code using JS Online Compiler
+function countletter(str,letter)
+{
+    let  count=0;
+    for(let char of str)
+    {
+        if(char==letter)
+        {
+            count++;
+        }
+    }
+    
+    return count;
+}
+
+console.log(countletter("ranbir","r"));
+
+
+#code 29
+function firstoccur(str)
+{
+    let countcharacter={};
+    
+    for(let char of str)
+    {
+        if(countcharacter[char])
+        {
+            countcharacter[char]++;
+        }
+        else
+        {
+            countcharacter[char]=1;
+        }
+    }
+    
+    for(let char of str)
+    {
+        if(countcharacter[char]==1)
+        {
+            return char;
+        }
+    }
+    
+    return null;
+    
+}
+const result = firstoccur('abacddbec');
+console.log(result);
+
+
+#code 30 - bubble sort
+
+function bubble(arr)
+{
+ 
+    for(let i=0;i<arr.length-1;i++)
+    {
+        for(let j=0;j<arr.length-1-i;j++)
+        {
+            if(arr[j]>arr[j+1])
+            {
+                let temp=arr[i];
+                arr[i]=arr[j];
+                arr[j]=temp;
+            }
+        }
+    }
+    
+    return arr;
+}
+
+console.log(bubble([9,8,7,6,5]))
+
+
+
+#code 31
+
+function longestcountry(str)
+{
+    let longest="";
+    
+    for(let char of str)
+    {
+        if(char.length>longest.length)
+        {
+            longest=char;
+        }
+    }
+    
+    return longest;
+}
+
+console.log(longestcountry(["Australia", "Germany", "United States of America"]))
+
+
+
+#code 32
+
+function myFunction() {
+    return "Something";
+}
+
+console.log(myFunction.name); 
+
+#code 33
+
+
+function fact(n)
+{
+    if(n<=1)return 1;
+    
+    return fact(n-1)*n;
+}
+
+const ans=fact(5);
+console.log(ans);
+
+
+#code 34
+
+function getrange(x,y)
+{
+    let val=x;
+    if(val>y)
+    {
+        return;
+    }
+    console.log(val);
+    return getrange(val+1,y)
+}
+
+getrange(100,1000)
+
+
+#code 35
+
+function gcd(a, b) {
+    while (b !== 0) {
+        let temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+
+#  CODE 36
+function getsum(arr,index)
+{
+   if(index>=arr.length)
+   {
+       return 0;
+   }
+   
+   return arr[index]+getsum(arr,index+1);
+}
+
+var nrr=[1,2,3,4,5,6];
+var result=getsum(nrr,0);
+console.log(result);
+
+
+#code 37
+
+function fibonacci(n) {
+  if (n === 0) return 0;
+  if (n === 1) return 1;
+  return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+function getFibonacciSeries(count) {
+  const series = [];
+  for (let i = 0; i < count; i++) {
+    series.push(fibonacci(i));
+  }
+  return series;
+}
+
+// Example usage:
+console.log(getFibonacciSeries(10)); 
+// Output: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+
+#code 38
+
+function getexpo(base,exponent)
+{
+ if(exponent==0)
+ {
+     return 1;
+ }
+   return base*getexpo(base,exponent-1);
+   
+
+}
+const ans=getexpo(5,5)
+console.log(ans);
+
+
+
+#code 39
+
+
+
+function isEven(num) {
+    return num % 2 === 0;
+}
+
+// Example usage:
+console.log(isEven(4));  // Output: true
+console.log(isEven(7));  // Output: false
+
+
+#code 40
+
+function display(a,b)
+{
+    if(a>b)
+    {
+        console.log(a);
+    }
+    else if(b>a)
+    {
+        console.log(b);
+    }
+    else
+    {
+        console.log("Both numbers are equal")
+    }
+}
+
+display(5,10);
+
+
+#code 41
+
+function findsign(a,b,c)
+{
+    const product=a*b*c;
+    if(product>0)
+    {
+        alert("The sign is +")
+    }
+    else if(product<0)
+    {
+        alert("The sign is -")
+        
+    }
+    else 
+    {
+        alert("The value is 0");
+    }
+    
+}
+
+console.log(findsign(3,6,-8))
+
+
+#code 42
+function sortThree(a,b,c)
+{
+    let max,mid,min;
+    
+    if(a>=b && a>=c)
+    {
+        max=a;
+        if(b>=c)
+        {
+            mid=b;
+            min=c;
+        }
+        else
+        {
+            min=b;
+            mid=c;
+        }
+    }
+    else if(b>=a && b>=c)
+    {
+        max=b;
+        if(a>=c)
+        {
+            mid=b;
+            min=c;
+        }
+        else
+        {
+            min=b;
+            mid=c;
+        }
+    }
+    else
+    {
+        max=c;
+        if(a>=b)
+        {
+            mid=a;
+            min=b;
+        }
+        else
+        {
+            min=a;
+            mid=b;
+        }
+    }
+    
+    alert(`Sorted order ${max} ${mid} ${min}`)
+}
+
+#code 43
+
+function findLargest(a, b, c, d, e) {
+    let largest;
+
+    if (a >= b && a >= c && a >= d && a >= e) {
+        largest = a;
+    } else if (b >= a && b >= c && b >= d && b >= e) {
+        largest = b;
+    } else if (c >= a && c >= b && c >= d && c >= e) {
+        largest = c;
+    } else if (d >= a && d >= b && d >= c && d >= e) {
+        largest = d;
+    } else {
+        largest = e;
+    }
+
+    alert("The largest number is: " + largest);
+}
+
+// Example usage:
+findLargest(12, 45, 8, 32, 19);  // Output: alert with "The largest number is: 45"
+
+
+#code 44
+
+function display(n)
+{
+    for(let i=0;i<=n;i++)
+    {
+        if(i%2==0)
+        {
+            alert(`${i} is even`)
+        }
+        else
+        {
+            alert(`${i} is odd`)
+        }
+    }
+}
+display(15)
+
+#code 45
+for (let i = 0; i <= 15; i++) {
+    if (i % 2 === 0) {
+        console.log(i + " is even");
+    } else {
+        console.log(i + " is odd");
+    }
+}
+
+
+#code 46
+
+    const students = [
+        { name: "David", marks: 80 },
+        { name: "Vinoth", marks: 77 },
+        { name: "Divya", marks: 88 },
+        { name: "Ishitha", marks: 95 },
+        { name: "Thomas", marks: 68 }
+    ];
+
+    let total = 0;
+
+    // Compute total marks
+    for (let student of students) {
+        total += student.marks;
+    }
+
+    // Compute average
+    const average = total / students.length;
+
+    // Determine grade
+    let grade;
+    if (average < 60) {
+        grade = "F";
+    } else if (average < 70) {
+        grade = "D";
+    } else if (average < 80) {
+        grade = "C";
+    } else if (average < 90) {
+        grade = "B";
+    } else {
+        grade = "A";
+    }
+
+    // Output result
+    console.log("Average Marks: " + average);
+    console.log("Grade: " + grade);
+}
+
+// Run the function
+computeGrade();
+
+
+
+#code 47
+
+function iterate(n)
+{
+    for(let i=0;i<n;i++)
+    {
+        if(i%3==0)
+        {
+            alert("Fizz")
+        }
+        else if(i%5==0)
+        {
+            alert("Buzz");
+        }
+        else
+        {
+            alert("Fizzbuzz")
+        }
+    }
+}
+
+iterate(5)
+
+
+
+#code 48
+
 
 
 
