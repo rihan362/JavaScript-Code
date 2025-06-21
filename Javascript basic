@@ -2231,9 +2231,1235 @@ console.log(repeat('Ha!'));      // "Ha!"
 
 
 
+CODE 150----------------------------
+
+
+function text_truncate(str, length, ending = "...") {
+
+  return str.length > length ? str.slice(0, length - ending.length) + ending : str;
+}
+
+console.log(text_truncate('We are doing JS string exercises.'));         // "We are doing JS string exercises."
+co
+
+code 151
+----------------------------------------------------------------
+
+function string_chunks(str,size)
+{
+    let result=[];
+    for(let i=0;i<str.length;i+=size)
+    {
+        result.push(str.slice(i,i+size));
+    }
+    
+    return result;
+}
 
 
 
+
+code 152
+----------------------------------------------------
+
+function string_chunks(str,size)
+{
+    let result=[];
+    for(let i=0;i<str.length;i+=size)
+    {
+        result.push(str.slice(i,i+size));
+    }
+    
+    return result;
+}
+
+console.log(string_chunks("rihanna",2))
+
+code 153
+--------------------------------------
+
+function repeat_string(str, count = 1) {
+  if (typeof str !== "string" || typeof count !== "number" || count < 1) {
+    return "Error in string or count.";
+  }
+  return str.repeat(count);
+}
+
+console.log(repeat_string('a', 4)); // "aaaa"
+console.log(repeat_string('a'));    // "a"
+
+
+coed 154
+----------------------------------
+
+
+function subStrAfterChars(str, char, pos) {
+  let index = str.indexOf(char);
+  if (index === -1) return str;
+  return pos === 'b' ? str.slice(index + 1) : str.slice(0, index);
+}
+
+console.log(subStrAfterChars('w3resource: JavaScript Exercises', ':','a')); // "w3resource"
+console.log(subStrAfterChars('w3resource: JavaScript Exercises', 'E','b')); // "xercises"
+
+
+code 155
+-----------------------------
+
+function strip(str) {
+  return str.trim();
+}
+
+console.log(strip('w3resource '));   // "w3resource"
+console.log(strip(' w3resource'));   // "w3resource"
+console.log(strip(' w3resource '));  // "w3resource"
+
+code 156
+-------------------------
+
+function truncate(str, numWords) {
+  return str.split(" ").slice(0, numWords).join(" ");
+}
+
+console.log(truncate('The quick brown fox jumps over the lazy dog', 4)); 
+// "The quick brown fox"
+
+
+code 157
+---------------------------
+function alphabetize_string(str) {
+  return str.replace(/\s+/g, '').split('').sort().join('');
+}
+
+console.log(alphabetize_string('United States')); // "Sadeeinsttttu"
+
+code 158
+----------------------------
+function remove_first_occurrence(str, searchStr) {
+  return str.replace(searchStr, '');
+}
+
+// Test
+console.log(remove_first_occurrence("The quick brown fox jumps over the lazy dog", 'the'));
+// Output: "The quick brown fox jumps over  lazy dog"
+
+
+code 159
+--------------------------
+function ascii_to_hexa(str) {
+  return str.split('').map(char => char.charCodeAt(0).toString(16)).join('');
+}
+
+// Test
+console.log(ascii_to_hexa('12'));   // "3132"
+console.log(ascii_to_hexa('100'));  // "313030"
+
+
+code 160
+--------------------------
+function hex_to_ascii(hex) {
+  let str = '';
+  for (let i = 0; i < hex.length; i += 2) {
+    str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
+  }
+  return str;
+}
+
+
+code 161
+----------------------------------
+function search_word(text, word) {
+  let pattern = new RegExp(`\\b${word}\\b`, 'gi');
+  let matches = text.match(pattern);
+  let count = matches ? matches.length : 0;
+  return `'${word}' was found ${count} times.`;
+}
+
+
+code162
+-------------------------------------
+
+function string_endsWith(str, suffix) {
+  if (suffix === '') return false;
+  return str.endsWith(suffix);
+}
+
+// Test
+console.log(string_endsWith('JS PHP PYTHON', 'PYTHON')); // true
+console.log(string_endsWith('JS PHP PYTHON', ''));       // false
+
+
+code 163
+---------------------------------
+function escape_html(str) {
+  return str.replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/'/g, "&#39;")
+            .replace(/"/g, "&quot;");
+}
+
+// Test
+console.log(escape_html('PHP & MySQL'));   // "PHP &amp; MySQL"
+console.log(escape_html('3 > 2'));         // "3 &gt; 2"
+
+
+code 164-----------------------
+
+
+function remove_non_ascii(str) {
+  return str.replace(/[^\x20-\x7E]/g, '');
+}
+
+// Test
+console.log(remove_non_ascii('äÄçÇéÉêPHP-MySQLöÖÐþúÚ'));  // "PHP-MySQL"
+
+
+code 165
+-----------------------------
+function remove_non_word(str) {
+  return str.replace(/[^\w\s-]/g, '');
+}
+
+// Test
+console.log(remove_non_word('PHP ~!@#$%^&*()+`-={}[]|\\:";\'/?><., MySQL'));
+// "PHP - MySQL"
+
+
+
+code 166
+---------------------------------
+function sentenceCase(str) {
+  return str.toLowerCase().replace(/(^\w|\.\s*\w)/g, s => s.toUpperCase());
+}
+
+// Test
+console.log(sentenceCase('PHP exercises. python exercises.'));
+// "Php Exercises. Python Exercises."
+
+
+
+code 167
+-----------------------------------
+function strip_html_tags(str) {
+  return str.replace(/<[^>]*>/g, '');
+}
+
+// Test
+console.log(strip_html_tags('<p><strong><em>PHP Exercises</em></strong></p>'));
+// "PHP Exercises"
+
+
+code 169
+-----------------------------
+
+
+function zeroFill(number, width, sign) {
+  let numStr = Math.abs(number).toString().padStart(width, '0');
+  if (sign === '-') {
+    return '+' + numStr;
+  }
+  return numStr;
+}
+
+// Test
+console.log(zeroFill(120, 5, '-'));  // "+00120"
+console.log(zeroFill(29, 4));        // "0029"
+
+
+code 170
+-------------------------
+
+
+function compare_strings(str1, str2) {
+  return str1.toLowerCase() === str2.toLowerCase();
+}
+
+
+code 171
+-----------------------------
+
+function case_insensitive_search(str, search) {
+  return str.toLowerCase().includes(search.toLowerCase()) ? "Matched" : "Not Matched";
+}
+
+
+
+code 172
+-------------------------
+function isFirstCharUpper(str) {
+  return /^[A-Z]/.test(str);
+}
+
+
+code 173----------------------
+
+
+function isValidCreditCard(cardNumber) {
+  return /^(?:\d{4}[- ]?){3}\d{4}$/.test(cardNumber);
+}
+
+
+code 174
+-------------------------
+const emailPattern = /^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/;
+
+// Test
+console.log(emailPattern.test("example.email+1@gmail.com")); // true
+
+code 175----------------------
+
+function findDate(str) {
+  return str.match(/\b\d{1,2}[\/-]\d{1,2}[\/-]\d{4}\b/);
+}
+
+// Test
+console.log(findDate("Today's date is 22-06-2025")); // ['22-06-2025']
+
+
+code 176
+-------------------------------
+function customTrim(str) {
+  return str.replace(/^\s+|\s+$/g, '');
+}
+
+
+code 177
+-------------------------
+function wordCount(str) {
+  return str.trim().replace(/\s+/g, ' ').split(' ').length;
+}
+
+code 178
+-----------------------
+function isValidIP(ip) {
+  return /^(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)(\.(?!$)){3}(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)$/.test(ip);
+}
+
+
+code 179
+----------------------
+function countVowels(str) {
+  return str.match(/[aeiou]/gi)?.length || 0;
+}
+
+code 180
+-------------------------------
+function isValidURL(url) {
+  return /^(https?:\/\/)?([\w.-]+)\.([a-z]{2,6})(\/\S*)?$/i.test(url);
+}
+
+
+code 181
+---------------------------
+function isAlphanumeric(str) {
+  return /^[a-z0-9]+$/i.test(str);
+}
+
+
+code 182--------------------
+function isValidTime(time) {
+  return /^([01]\d|2[0-3]):([0-5]\d)$/.test(time);
+}
+
+
+code 183
+------------------------------
+function isUSZipCode(zip) {
+  return /^\d{5}(-\d{4})?$/.test(zip);
+}
+
+
+code 184
+------------------------
+function isUKPostCode(code) {
+  return /^[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}$/i.test(code);
+}
+
+code 185
+--------------------------
+function isCanadaPostCode(code) {
+  return /^[A-Z]\d[A-Z] ?\d[A-Z]\d$/i.test(code);
+}
+
+
+code 186
+-------------------------
+function isValidSSN(ssn) {
+  return /^\d{3}-\d{2}-\d{4}$/.test(ssn);
+}
+
+
+code 187
+-------------------------
+function isHexValue(val) {
+  return /^0[xX][0-9a-fA-F]+$/.test(val);
+}
+
+
+code 188------------------
+function isDomain(val) {
+  return /^[a-z0-9.-]+\.[a-z]{2,}$/i.test(val);
+}
+
+
+code 189
+--------------------
+function isHTML(val) {
+  return /<\/?[a-z][\s\S]*>/i.test(val);
+}
+
+
+code 190----------------
+function isAlphaDashUnderscore(val) {
+  return /^[a-zA-Z-_]+$/.test(val);
+}
+
+
+code 191
+----------------------
+function thousands_separators(num) {
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+// Test
+console.log(thousands_separators(1000));       // "1,000"
+
+
+code 192
+---------------------------------
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>JS DOM paragraph style</title>
+</head>
+<body>
+  <p id='text'>JavaScript Exercises - w3resource</p>
+  <button onclick="js_style()">Style</button>
+  <script>
+    function rihan__style() {
+      const text = document.getElementById('text');
+      text.style.fontFamily = "Arial";
+      text.style.fontSize = "20px";
+      text.style.color = "blue";
+    }
+  </script>
+</body>
+</html
+
+code 193
+--------------------------
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Get First and Last Name</title>
+</head>
+<body>
+  <form id="form1" onsubmit="getFormvalue(event)">
+    First name: <input type="text" name="fname" value="David"><br>
+    Last name: <input type="text" name="lname" value="Beckham"><br>
+    <input type="submit" value="Submit">
+  </form>
+  <script>
+    function getFormvalue(event) {
+      event.preventDefault();
+      const fname = document.forms["form1"]["fname"].value;
+      const lname = document.forms["form1"]["lname"].value;
+      alert(fname + " " + lname);
+    }
+  </script>
+</body>
+</html>
+
+
+
+code 194
+-------------------------
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Change Paragraph Background</title>
+</head>
+<body>
+  <p id="para">This is a paragraph.</p>
+  <button onclick="changeBackground()">Change Background</button>
+  <script>
+    function changeBackground() {
+      document.getElementById("para").style.backgroundColor = "yellow";
+    }
+  </script>
+</body>
+</html>
+
+
+code 195
+--------------------------
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Get Link Attributes</title>
+</head>
+<body>
+  <p><a id="w3r" type="text/html" hreflang="en-us" rel="nofollow" target="_self" href="http://www.w3resource.com/">w3resource</a></p>
+  <button onclick="getAttributes()">Get Attributes</button>
+  <script>
+    function getAttributes() {
+      const link = document.getElementById("w3r");
+      alert(`href: ${link.href}\nhreflang: ${link.hreflang}\nrel: ${link.rel}\ntarget: ${link.target}\ntype: ${link.type}`);
+    }
+  </script>
+</body>
+</html>
+
+
+code 196
+---------------------------
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Insert Row in Table</title>
+</head>
+<body>
+  <table id="sampleTable" border="1">
+    <tr><td>Row1 cell1</td><td>Row1 cell2</td></tr>
+    <tr><td>Row2 cell1</td><td>Row2 cell2</td></tr>
+  </table><br>
+  <input type="button" onclick="insert_Row()" value="Insert row">
+  <script>
+    function insert_Row() {
+      let table = document.getElementById('sampleTable');
+      let row = table.insertRow();
+      let cell1 = row.insertCell(0);
+      let cell2 = row.insertCell(1);
+      cell1.innerHTML = "New Cell1";
+      cell2.innerHTML = "New Cell2";
+    }
+  </script>
+</body>
+</html>
+
+
+code 197-------------------------
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Change the content of a cell</title>
+</head>
+<body>
+  <table id="myTable" border="1">
+    <tr><td>Row1 cell1</td><td>Row1 cell2</td></tr>
+    <tr><td>Row2 cell1</td><td>Row2 cell2</td></tr>
+    <tr><td>Row3 cell1</td><td>Row3 cell2</td></tr>
+  </table>
+  <form>
+    <input type="button" onclick="changeContent()" value="Change content">
+  </form>
+
+  <script>
+    function changeContent() {
+      const row = parseInt(prompt("Enter row index (0-based):"));
+      const col = parseInt(prompt("Enter column index (0-based):"));
+      const text = prompt("Enter new content:");
+      const table = document.getElementById("myTable");
+
+      if (
+        row >= 0 && row < table.rows.length &&
+        col >= 0 && col < table.rows[row].cells.length
+      ) {
+        table.rows[row].cells[col].innerHTML = text;
+      } else {
+        alert("Invalid row or column index.");
+      }
+    }
+  </script>
+</body>
+</html>
+
+
+code 198
+--------------------------------
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Create Table</title>
+  <style>
+    body { margin: 30px; }
+  </style>
+</head>
+<body>
+  <table id="myTable" border="1"></table>
+  <form>
+    <input type="button" onclick="createTable()" value="Create the table">
+  </form>
+  <script>
+    function createTable() {
+      const rows = parseInt(prompt("Enter number of rows:"));
+      const cols = parseInt(prompt("Enter number of columns:"));
+      const table = document.getElementById("myTable");
+      table.innerHTML = "";
+      for (let i = 0; i < rows; i++) {
+        const row = table.insertRow();
+        for (let j = 0; j < cols; j++) {
+          const cell = row.insertCell();
+          cell.innerHTML = `Row-${i} Column-${j}`;
+        }
+      }
+    }
+  </script>
+</body>
+</html>
+
+
+
+code 199
+-----------------------------------
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Remove items from a dropdown list</title>
+</head>
+<body>
+  <form>
+    <select id="colorSelect">
+      <option>Red</option>
+      <option>Green</option>
+      <option>White</option>
+      <option>Black</option>
+    </select>
+    <input type="button" onclick="removecolor()" value="Select and Remove">
+  </form>
+  <script>
+    function removecolor() {
+      const sel = document.getElementById("colorSelect");
+      sel.remove(sel.selectedIndex);
+    }
+  </script>
+</body>
+</html>
+
+code 200
+--------------------------
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Count and Display Dropdown Items</title>
+  <style>
+    body { margin: 30px; }
+  </style>
+</head>
+<body>
+  <form>
+    Select your favorite Color:
+    <select id="mySelect">
+      <option>Red</option>
+      <option>Green</option>
+      <option>Blue</option>
+      <option>White</option>
+    </select>
+    <input type="button" onclick="getOptions()" value="Count and Output all items">
+  </form>
+  <script>
+    function getOptions() {
+      const sel = document.getElementById("mySelect");
+      let message = `Total items: ${sel.length}\n`;
+      for (let i = 0; i < sel.length; i++) {
+        message += `${i + 1}. ${sel.options[i].text}\n`;
+      }
+      alert(message);
+    }
+  </script>
+</body>
+</html>
+
+
+code 201
+
+--------------------------
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Random Image Display</title>
+</head>
+<body>
+  <button onclick="showRandomImage()">Show Random Image</button>
+  <br><br>
+  <img id="image" src="" alt="Random Image" width="300">
+  <script>
+    function showRandomImage() {
+      const images = [
+        { url: "http://farm4.staticflickr.com/3691/11268502654_f28f05966c_m.jpg", width: 240, height: 160 },
+        { url: "http://farm1.staticflickr.com/33/45336904_1aef569b30_n.jpg", width: 320, height: 195 },
+        { url: "http://farm6.staticflickr.com/5211/5384592886_80a512e2c9.jpg", width: 500, height: 343 }
+      ];
+      const rand = images[Math.floor(Math.random() * images.length)];
+      const img = document.getElementById("image");
+      img.src = rand.url;
+      img.width = rand.width;
+      img.height = rand.height;
+    }
+  </script>
+</body>
+</html>
+
+
+code 202
+----------------------------
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Highlight Bold Text</title>
+</head>
+<body>
+  <a href="#" onmouseover="highlight()" onmouseout="removeHighlight()">
+    Hover here to highlight bold text
+  </a>
+  <p>
+    We have just started this section for the users (<b>beginner</b> to <b>intermediate</b>)
+    who want to work with various JavaScript problems and write scripts online
+    to test their <b>JavaScript</b> skill.
+  </p>
+  <script>
+    function highlight() {
+      const bolds = document.getElementsByTagName("b");
+      for (let b of bolds) {
+        b.style.backgroundColor = "yellow";
+      }
+    }
+    function removeHighlight() {
+      const bolds = document.getElementsByTagName("b");
+      for (let b of bolds) {
+        b.style.backgroundColor = "";
+      }
+    }
+  </script>
+</body>
+</html>
+
+
+code 203
+----------------------------
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Window Dimensions</title>
+</head>
+<body>
+  <p id="dimensions">Resize the window to see the changes</p>
+  <script>
+    function updateDimensions() {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      document.getElementById("dimensions").textContent = `Width: ${width}, Height: ${height}`;
+    }
+    window.addEventListener("resize", updateDimensions);
+    window.addEventListener("load", updateDimensions);
+  </script>
+</body>
+</html>
+
+
+code 204
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Random Image Display</title>
+</head>
+<body>
+  <button onclick="showRandomImage()">Show Random Image</button>
+  <br><br>
+  <img id="image" src="" alt="Random Image" width="300">
+  <script>
+    function showRandomImage() {
+      const images = [
+        { url: "http://farm4.staticflickr.com/3691/11268502654_f28f05966c_m.jpg", width: 240, height: 160 },
+        { url: "http://farm1.staticflickr.com/33/45336904_1aef569b30_n.jpg", width: 320, height: 195 },
+        { url: "http://farm6.staticflickr.com/5211/5384592886_80a512e2c9.jpg", width: 500, height: 343 }
+      ];
+      const rand = images[Math.floor(Math.random() * images.length)];
+      const img = document.getElementById("image");
+      img.src = rand.url;
+      img.width = rand.width;
+      img.height = rand.height;
+    }
+  </script>
+</body>
+</html>
+
+
+code 205
+------------------------
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Draw Rectangle</title>
+</head>
+<body>
+  <canvas id="canvas" width="300" height="150" style="border:1px solid #000"></canvas>
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    ctx.fillStyle = "blue";
+    ctx.fillRect(50, 30, 200, 100);
+  </script>
+</body>
+</html>
+
+
+code 206
+--------------------
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Draw Circle</title>
+</head>
+<body>
+  <canvas id="canvas" width="300" height="200" style="border:1px solid #000"></canvas>
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    ctx.beginPath();
+    ctx.arc(150, 100, 70, 0, 2 * Math.PI);
+    ctx.fillStyle = "green";
+    ctx.fill();
+    ctx.stroke();
+  </script>
+</body>
+</html>
+
+
+code 207
+---------------------------------
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Intersecting Rectangles</title>
+</head>
+<body>
+  <canvas id="canvas" width="300" height="200" style="border:1px solid #000"></canvas>
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    ctx.fillStyle = "red";
+    ctx.fillRect(30, 30, 100, 100);
+
+    ctx.fillStyle = "rgba(0, 0, 255, 0.5)";
+    ctx.fillRect(80, 80, 100, 100);
+  </script>
+</body>
+</html>
+
+
+code 208---------------------------
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Draw Triangle</title>
+</head>
+<body>
+  <canvas id="canvas" width="300" height="200" style="border:1px solid #000"></canvas>
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    ctx.beginPath();
+    ctx.moveTo(50, 150);
+    ctx.lineTo(50, 50);
+    ctx.lineTo(150, 150);
+    ctx.closePath();
+
+    ctx.fillStyle = "orange";
+    ctx.fill();
+    ctx.stroke();
+  </script>
+</body>
+</html>
+
+
+code 209
+---------------------------------
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Diagram using moveTo</title>
+</head>
+<body>
+  <canvas id="canvas" width="300" height="200" style="border:1px solid #000"></canvas>
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    ctx.beginPath();
+    ctx.moveTo(20, 20);
+    ctx.lineTo(280, 20);
+    ctx.moveTo(280, 20);
+    ctx.lineTo(280, 180);
+    ctx.moveTo(280, 180);
+    ctx.lineTo(20, 180);
+    ctx.moveTo(20, 180);
+    ctx.lineTo(20, 20);
+    ctx.stroke();
+  </script>
+</body>
+</html>
+
+
+code 210
+------------------------------
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Diagonal Gradient Circles</title>
+</head>
+<body>
+  <canvas id="canvas" width="300" height="300" style="border:1px solid #000"></canvas>
+  <script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+
+    const steps = 6;
+    const radius = 20;
+    for (let i = 0; i < steps; i++) {
+      const gray = Math.floor((i / (steps - 1)) * 255);
+      ctx.beginPath();
+      ctx.arc(50 + i * 40, 50 + i * 40, radius, 0, 2 * Math.PI);
+      ctx.fillStyle = `rgb(${gray}, ${gray}, ${gray})`;
+      ctx.fill();
+      ctx.stroke();
+    }
+  </script>
+</body>
+</html>
+
+
+code 211
+---------------------------
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>List Object Properties</title>
+</head>
+<body>
+  <script>
+    const student = {
+      name: "David Rayy",
+      sclass: "VI",
+      rollno: 12
+    };
+
+    const properties = Object.keys(student);
+    document.write("Properties: " + properties.join(", "));
+  </script>
+</body>
+</html>
+
+
+code 212
+-----------------------------
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Delete Property</title>
+</head>
+<body>
+  <script>
+    const student = {
+      name: "David Rayy",
+      sclass: "VI",
+      rollno: 12
+    };
+
+    document.write("Before deletion: " + JSON.stringify(student) + "<br>");
+    delete student.rollno;
+    document.write("After deletion: " + JSON.stringify(student));
+  </script>
+</body>
+</html>
+
+
+code 213
+---------------------------
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Object Length</title>
+</head>
+<body>
+  <script>
+    const student = {
+      name: "David Rayy",
+      sclass: "VI",
+      rollno: 12
+    };
+
+    const length = Object.keys(student).length;
+    document.write("Object length: " + length);
+  </script>
+</body>
+</html>
+
+
+code 214
+--------------------------
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Book Reading Status</title>
+</head>
+<body>
+  <script>
+    const library = [
+      {
+        author: 'Bill Gates',
+        title: 'The Road Ahead',
+        readingStatus: true
+      },
+      {
+        author: 'Steve Jobs',
+        title: 'Walter Isaacson',
+        readingStatus: true
+      },
+      {
+        author: 'Suzanne Collins',
+        title: 'Mockingjay: The Final Book of The Hunger Games',
+        readingStatus: false
+      }
+    ];
+
+    library.forEach(book => {
+      document.write(`<p>${book.title} by ${book.author} - Reading Status: ${book.readingStatus}</p>`);
+    });
+  </script>
+</body>
+</html>
+
+code 215
+---------------------------
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Cylinder Volume</title>
+</head>
+<body>
+  <script>
+    class Cylinder {
+      constructor(radius, height) {
+        this.radius = radius;
+        this.height = height;
+      }
+
+      getVolume() {
+        return (Math.PI * Math.pow(this.radius, 2) * this.height).toFixed(4);
+      }
+    }
+
+    const cyl = new Cylinder(3, 7);
+    document.write("Volume of Cylinder: " + cyl.getVolume());
+  </script>
+</body>
+</html>
+
+
+code 216
+-----------------------------
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Bubble Sort</title>
+</head>
+<body>
+  <script>
+    function bubbleSort(arr) {
+      let n = arr.length;
+      for (let i = 0; i < n - 1; i++) {
+        for (let j = 0; j < n - i - 1; j++) {
+          if (arr[j] > arr[j + 1]) {
+            [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+          }
+        }
+      }
+      return arr;
+    }
+
+    const data = [6, 4, 0, 3, -2, 1];
+    const sorted = bubbleSort(data);
+    document.write("Sorted Array: " + sorted);
+  </script>
+</body>
+</html>
+
+
+code 217
+--------------------------
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>String Subsets</title>
+</head>
+<body>
+  <script>
+    function getSubsets(str) {
+      let result = [];
+      for (let i = 0; i < str.length; i++) {
+        for (let j = i + 1; j <= str.length; j++) {
+          result.push(str.slice(i, j));
+        }
+      }
+      return result;
+    }
+
+    const input = "dog";
+    const subsets = getSubsets(input);
+    document.write("Subsets: " + JSON.stringify(subsets));
+  </script>
+</body>
+</html>
+
+
+
+code 218
+--------------------------
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Clock</title>
+</head>
+<body>
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const time = now.toLocaleTimeString('en-GB');
+      console.log(time);
+    }
+    setInterval(updateClock, 1000);
+  </script>
+</body>
+</html>
+
+
+code 219
+---------------------------
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Circle Area and Perimeter</title>
+</head>
+<body>
+  <script>
+    class Circle {
+      constructor(radius) {
+        this.radius = radius;
+      }
+
+      getArea() {
+        return (Math.PI * this.radius * this.radius).toFixed(2);
+      }
+
+      getPerimeter() {
+        return (2 * Math.PI * this.radius).toFixed(2);
+      }
+    }
+
+    const r = 5;
+    const c = new Circle(r);
+    document.write(`Radius: ${r}<br>Area: ${c.getArea()}<br>Perimeter: ${c.getPerimeter()}`);
+  </script>
+</body>
+</html>
+
+-------------------------------------------------
+code 220
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Sort Object Array</title>
+</head>
+<body>
+  <script>
+    const library = [
+      { title: 'The Road Ahead', author: 'Bill Gates', libraryID: 1254 },
+      { title: 'Walter Isaacson', author: 'Steve Jobs', libraryID: 4264 },
+      { title: 'Mockingjay', author: 'Suzanne Collins', libraryID: 3245 }
+    ];
+
+    library.sort((a, b) => b.libraryID - a.libraryID);
+
+    document.write(JSON.stringify(library, null, 2));
+  </script>
+</body>
+</html>
+
+
+code 221
+---------------------------------------
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Clock</title>
+</head>
+<body>
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const time = now.toLocaleTimeString('en-GB');
+      console.log(time);
+    }
+    setInterval(updateClock, 1000);
+  </script>
+</body>
+</html>
+
+code 222-----------------------------
 
 
 
