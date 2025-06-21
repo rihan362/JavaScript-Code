@@ -887,6 +887,238 @@ iterate(5)
 #code 48
 
 
+function happynumr(n)
+{
+    let happynumber=[];
+    let current=1;
+    while(happnumber.length<n)
+    {
+        if(isHappy(current))
+        {
+            happynumber.push(current);
+        }
+        current++;
+    }
+    
+    return happynumber;
+}
+
+
+function isHappy(num)
+{
+    let seen =new set();
+    while(num!=1 && !seen.has(num))
+    {
+        seen.add(num);
+        num=getsumsquare(num);
+        
+    }
+    
+    return num==1;
+    
+}
+
+function getsumsquare(num)
+{
+    let sum=0;
+    while(num>0)
+    {
+        let digit=num%10;
+        sum+=digit*digit;
+        num=Math.floor(num/10);
+    }
+    
+    return sum;
+}
+
+
+
+#code 49
+ function is_array(input) {
+  return Array.isArray(input);
+}
+
+// Test Data
+console.log(is_array('w3resource')); // false
+console.log(is_array([1, 2, 3]));    // true
+
+
+
+#code 50
+
+function array_Clone(arr) {
+  return arr.slice(0);
+}
+
+// Test Data
+console.log(array_Clone([1, 2, 4, 0]));       // [1, 2, 4, 0]
+console.log(array_Clone([1, 2, [4, 0]]));     // [1, 2, [4, 0]]
+
+
+#code 51
+
+function first(arr, n) {
+  if (!Array.isArray(arr) || arr.length === 0) return [];
+
+  if (n == null) {
+    return arr[0];
+  }
+
+  if (n < 0) {
+    return [];
+  }
+
+  return arr.slice(0, n);
+}
+
+// Test Data
+console.log(first([7, 9, 0, -2]));       // 7
+console.log(first([], 3));              // []
+
+
+
+#code 52
+
+var mycolor=['red','blue','pink'];
+
+console.log(mycolor.join(''))
+console.log(mycolor.join(','))
+console.log(mycolor.join('+'))
+
+
+#code 53
+
+
+function insertdashes(num)
+{
+    let str=num.toString();
+    
+    let result=[str[0]];
+    
+    for(let i=1;i<str.length;i++)
+    {
+        if(parseInt(str[i-1])%2==0 && parseInt(str[i])%2==0)
+        {
+            result.push('-');
+        }
+        result.push(str[i]);
+    }
+    
+    return result.join('')
+}
+
+console.log(insertdashes(0245678));
+
+
+
+
+#code 54
+
+ function mostfrequnt(arr)
+ {
+     let frequency={};
+     let maxcount=0;
+     let mostfrequent;
+     
+     for(let i=0;i<arr.length;i++)
+     {
+         let item=arr[i];
+         frequency[item]=(frequency[item]||0)+1;
+         
+         if(frequency[item]>maxcount)
+         {
+             maxcount=frequency[item];
+             mostfrequent=item;
+             
+         }
+     }
+     console.log(`${mostfrequent} ${maxcount}`);
+ }
+ 
+ 
+ var arr1 = [3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3];
+mostfrequnt(arr1);
+
+
+
+#code 55
+function swap(str)
+{
+    let result="";
+    
+    for(let char of str)
+    {
+        if(char==char.toUpperCase())
+        {
+            result+=char.toLowerCase();
+        }
+        else
+        {
+            result+=char.toUpperCase();
+        }
+    }
+    
+    return result;
+}
+
+console.log(swap("Rihan"))
+
+
+#code 56
+
+function sumof(arr)
+{
+    let sum=0;
+    
+    for(let val of arr)
+    {
+        sum+=val*val;
+        
+    }
+    return sum;
+}
+
+console.log(sumof([1,2,3,4]))
+
+
+
+#code 57
+
+function sumproof(arr)
+{
+    let sum=0;
+    let product=1;
+    
+    for(let val of arr)
+    {
+        sum+=val*val;
+        product*=val;
+        
+    }
+    console.log(product);
+    console.log(sum)
+}
+sumproof([1,2,3,4])
+
+
+#code 58
+
+let items = [];
+
+function addItem(item) {
+  items.push(item);
+  console.log("Item added:", item);
+  console.log("Current items in array:", items);
+}
+
+// Sample usage
+addItem("Apple");
+addItem("Banana");
+addItem("Orange");
+
+
+#code 59
+
 
 
 
