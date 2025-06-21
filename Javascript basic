@@ -2144,6 +2144,93 @@ console.log(truncate_string("Robin Singh", 4)); // "Robi"
 code 141
 ----------------------------
 
+function abbrev_name(name) {
+  const [first, last] = name.split(" ");
+  return `${first} ${last.charAt(0)}.`;
+}
+
+console.log(abbrev_name("Robin Singh")); // "Robin S."
+
+
+code 142----------------------
+
+function protect_email(email) {
+  let [user, domain] = email.split("@");
+  let hidden = user.slice(0, user.indexOf("_")) || user.slice(0, 4);
+  return `${hidden}...@${domain}`;
+}
+
+code 143-----------------------------
+
+function string_parameterize(str) {
+  return str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+}
+
+code 144-----------------------------
+
+function capital(str)
+{
+    return str.charAt(0).toUpperCase()+str.slice(1,str.length);
+}
+
+console.log(capital("rihan"))
+
+code 145----------------------------
+
+function swapcase(str) {
+  return str.split('').map(char =>
+    char === char.toUpperCase()
+      ? char.toLowerCase()
+      : char.toUpperCase()
+  ).join('');
+}
+
+console.log(swapcase('AaBbc')); // "aAbBC"
+
+
+code 146
+------------------------
+
+function camelize(str) {
+  return str.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, (match, index) =>
+    index === 0 ? match.trim() : match.toUpperCase().trim()
+  ).replace(/\s+/g, '');
+}
+
+
+#code 147
+------------------------------------
+function uncamelize(str, sep = ' ') {
+  return str.replace(/([a-z])([A-Z])/g, `$1${sep}$2`).toLowerCase();
+}
+
+console.log(uncamelize('helloWorld'));        // "hello world"
+console.log(uncamelize('helloWorld','-'));    // "hello-world"
+console.log(uncamelize('helloWorld','_'));    // "hello_world"
+
+code 148
+----------------------------------
+
+function insert(original, insertText = '', position = 0) {
+  return original.slice(0, position) + insertText + original.slice(position);
+}
+
+console.log(insert('We are doing some exercises.'));                         // "We are doing some exercises."
+
+
+code 149
+--------------------------------
+function repeat(str, n = 1) {
+  return str.repeat(n);
+}
+
+console.log(repeat('Ha!'));      // "Ha!"
+
+
+
+
+
+
 
 
 
