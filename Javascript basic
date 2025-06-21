@@ -1117,10 +1117,249 @@ addItem("Banana");
 addItem("Orange");
 
 
-#code 59
+#code 59-pattern
+
+
+function print(n)
+{
+    
+    for(let i=0;i<n;i++)
+    {
+        let pattern="";
+        for(let j=0;j<=i;j++)
+        {
+            pattern+="*";
+        }
+        console.log(pattern)
+        
+    }
+}
+
+print(5)
+
+code 60
+
+function print(a,b)
+{
+    while(b!=0)
+    {
+        let temp=b;
+        b=a%b;
+        a=temp;
+    }
+    
+    console.log(a)
+    
+}
+
+print(50,45)
 
 
 
 
+#code 61
+
+for (let i = 1; i < 1000; i++) {
+    if (i % 3 === 0 || i % 5 === 0) {
+        sum += i;
+    }
+}
+
+
+#code 62
+
+// Online Javascript Editor for free
+// Write, Edit and Run your Javascript code using JS Online Compiler
+function removeDuplicates(arr)
+{
+    let seen=new Set();
+    return arr.filter(item=>{
+        let lower=item.toLowerCase();
+        if(seen.has(lower))
+        {
+            return false;
+        }
+        else
+        {
+            seen.add(lower)
+            return true;
+        }
+    })
+}
+
+let items = ["Apple", "Banana", "apple", "Orange", "BANANA"];
+let result = removeDuplicates(items);
+console.log(result);
+
+
+
+
+
+#code 63-Display colors with ordinal suffix
+
+let color=["Blue","Yellow","red"];
+
+function getsuffix(n)
+{
+    if(n==1)return "st";
+    if(n==2)return "nd";
+    if(n==3)return "rd";
+    return "th"
+    
+    
+}
+
+for(let i=0;i<color.length;i++)
+{
+   position=i+1;
+   suffix=getsuffix(position);
+   console.log(`${position}${suffix} is ${color[i]}`);
+   
+}
+
+
+#code 64 range of leap years----------------------
+
+function getleap(start,end)
+{
+    let leapyear=[];
+    for(let i=start;i<=end;i++)
+    {
+        if((i%4==0 && i%100!=0)||(i%400==0))
+        {
+            leapyear.push(i);
+        }
+    }
+    
+    console.log(leapyear)
+}
+
+getleap(2000,2025)
+
+
+#code 65 -shuffle array---------------------------
+function shuffleArray(arr)
+{
+    for(let i=arr.length-1;i>0;i--)
+    {
+        let j=Math.floor(Math.random()*(i+1));
+        [arr[i],arr[j]]=[arr[j],arr[i]]
+    }
+    
+    return arr;
+}
+
+let nums = [1, 2, 3, 4, 5];
+console.log(shuffleArray(nums));
+
+£code-66-------------------------------------------
+
+
+
+function sumOfIndexValues(array1, array2) {
+  let maxLength = Math.max(array1.length, array2.length);
+  let result = [];
+
+  for (let i = 0; i < maxLength; i++) {
+    let val1 = array1[i] || 0;  
+    let val2 = array2[i] || 0;  
+    result.push(val1 + val2);
+  }
+
+  return result;
+}
+
+// Sample input
+let array1 = [1, 0, 2, 3, 4];
+let array2 = [3, 5, 6, 7, 8, 13];
+
+
+
+code 67
+
+function findDuplicates(arr) {
+    let seen = new Set();
+    let duplicates = new Set();
+
+    for (let item of arr) {
+        if (seen.has(item)) {
+            duplicates.add(item);
+        } else {
+            seen.add(item);
+        }
+    }
+
+    return Array.from(duplicates);
+}
+
+
+let numbers = [1, 2, 3, 4, 5, 2, 4, 6, 1];
+let result = findDuplicates(numbers);
+console.log("Duplicate values:", result);
+
+
+code 68
+
+function flatten(arr, shallow = false) {
+  if (shallow) {
+    return arr.flat(); 
+  } else {
+    return arr.flat(Infinity); 
+  }
+}
+
+
+console.log(flatten([1, [2], [3, [[4]]], [5, 6]]));        // [1, 2, 3, 4, 5, 6]
+console.log(flatten([1, [2], [3, [[4]]], [5, 6]], true));  // [1, 2, 3, [[4]], 5, 6]
+
+
+code 69
+function union(arr1,arr2)
+{
+    let result=[];
+    for(let i=0;i<arr1.length;i++)
+    {
+        if(!result.includes(arr1[i]))
+        {
+            result.push(arr1[i]);
+        }
+    }
+    
+    for(let j=0;j<arr2,length;j++)
+    {
+        if(!result.includes(arr2[j]))
+        {
+            result.push(arr2[i]);
+        }
+    }
+    
+    return result;
+}
+
+console.log([1,2,3,4,5],[3,4,5,6])
+
+
+code 70
+
+function difference(arr1, arr2) {
+  let result = [];
+
+  for (let i = 0; i < arr1.length; i++) {
+    if (!arr2.includes(arr1[i])) {
+      result.push(arr1[i]);
+    }
+  }
+
+  for (let j = 0; j < arr2.length; j++) {
+    if (!arr1.includes(arr2[j]) && !result.includes(arr2[j])) {
+      result.push(arr2[j]);
+    }
+  }
+
+  return result.map(String); 
+}
+
+
+console.log(difference([1, 2, 3], [100, 2, 1, 10])); 
 
 
