@@ -1792,6 +1792,35 @@ function calculate_age(birthDate) {
   return age;
 }
 
+code 105---------------------------------
+
+function day_of_the_month(date) {
+  return String(date.getDate()).padStart(2, '0');
+}
+
+
+code 106
+-------------------------------------------
+function short_Days(date) {
+  return date.toLocaleString('en-us', { weekday: 'short' });
+}
+
+code 107----------------------------------
+
+function long_Days(date) {
+  return date.toLocaleString('en-us', { weekday: 'long' });
+}
+
+code 108------------------------------------
+
+function ISO_numeric_date(date) {
+  const day = date.getDay();
+  return day === 0 ? 7 : day;
+}
+
+
+
+
 
 
 
