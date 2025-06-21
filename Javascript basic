@@ -1523,6 +1523,290 @@ console.log(array_filled(6, 0));   // [0, 0, 0, 0, 0, 0]
 console.log(array_filled(4, 11));  // [11, 11, 11, 11]
 
 
+code 81----------------------  Array filled value
+
+
+function array_filled(length, value) {
+  return Array(length).fill(value);
+}
+
+
+console.log(array_filled(3, 'default value')); 
+// ["default value", "default value", "default value"]
+
+
+code 82-----------------------  
+
+function moveElement(arr, fromIndex, toIndex) {
+  // Check bounds
+  if (fromIndex < 0 || fromIndex >= arr.length || toIndex < 0 || toIndex >= arr.length) {
+    console.error("Invalid index");
+    return arr;
+  }
+
+  const element = arr.splice(fromIndex, 1)[0];
+  arr.splice(toIndex, 0, element);             
+  return arr;
+}
+
+
+code 83--------------------------------
+
+  function filter_array_values(arr) {
+  return arr.filter(Boolean); 
+}
+
+
+console.log(filter_array_values([58, '', 'abcd', true, null, false, 0]));
+
+
+
+code 84---------------------------------
+
+
+function array_range(start, count) {
+  return Array.from({ length: count }, (_, i) => start + i);
+}
+
+
+console.log(array_range(1, 4));   
+console.log(array_range(-6, 4));    
+
+
+
+code 85------------------------------
+
+
+function rangeBetwee(start, end) {
+  let result = [];
+  for (let i = start; i <= end; i++) {
+    result.push(i);
+  }
+  return result;
+}
+
+// Test
+console.log(rangeBetwee(4, 7));     // [4, 5, 6, 7]
+console.log(rangeBetwee(-4, 7));    // [-4, -3, ..., 7]
+
+code 86------------------------
+
+function difference(arr1, arr2) {
+  // Flatten deeply nested arrays
+  function flattenDeep(arr) {
+    return arr.reduce((acc, val) =>
+      Array.isArray(val) ? acc.concat(flattenDeep(val)) : acc.concat(val), []);
+  }
+
+  const flatArr1 = flattenDeep(arr1).map(String);
+  const flatArr2 = flattenDeep(arr2).map(String);
+
+  const combined = [...flatArr1, ...flatArr2];
+  const unique = Array.from(new Set(combined));
+
+  return unique;
+}
+
+console.log(difference([1, 2, 3], [100, 2, 1, 10]));
+console.log(difference([1, 2, 3, 4, 5], [1, [2], [3, [[4]]],[5,6]]));
+
+
+code 87-----------------------------
+
+
+JAVASCRIPT DATE
+
+
+
+function is_date(input) {
+  return Object.prototype.toString.call(input) === "[object Date]";
+}
+
+console.log(is_date([1, 2, 4, 0]));                 // false
+
+code 88---------------------------
+
+function curday(separator = '/') {
+  const now = new Date();
+  const mm = String(now.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+  const dd = String(now.getDate()).padStart(2, '0');
+  const yyyy = now.getFullYear();
+
+  return mm + separator + dd + separator + yyyy;
+}
+
+
+console.log(curday('/')); // e.g., "06/21/2025"
+console.log(curday('-')); 
+
+code 89-----------------------------
+
+function getdays(month,year)
+{
+    return new Date(year,month,0).getDate();
+}
+
+console.log(getdays(1, 2012));
+
+
+code 90-------------------------------
+
+function month_name(date) {
+  const monthNames = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+  return monthNames[date.getMonth()];
+}
+
+
+
+code 91----------------------------
+
+function compare_dates(date1, date2) {
+  if (date1.getTime() === date2.getTime()) return "Date1 = Date2";
+  else if (date1 > date2) return "Date1 > Date2";
+  else return "Date2 > Date1";
+}
+
+
+code 92
+--------------------------------------
+
+function add_minutes(date, minutes) {
+  return new Date(date.getTime() + minutes * 60000);
+}
+
+
+code 93-------------------------------
+
+function is_weekend(dateStr) {
+  const date = new Date(dateStr);
+  const day = date.getDay();
+  return (day === 0 || day === 6) ? "weekend" : undefined;
+}
+
+// Test
+console.log(is_weekend('Nov 15, 2014')); // Saturday
+
+
+
+code 94--------------------------------
+
+function date_diff_indays(date1, date2) {
+  const dt1 = new Date(date1);
+  const dt2 = new Date(date2);
+  const diffTime = dt2.getTime() - dt1.getTime();
+  return Math.floor(diffTime / (1000 * 60 * 60 * 24));
+}
+
+code 95----------------------------------
+
+
+function lastday(year, month) {
+  return new Date(year, month + 1, 0).getDate();
+}
+
+
+
+code 96-----------------------------------
+
+
+function yesterday(dateStr) {
+  const date = new Date(dateStr);
+  date.setDate(date.getDate() - 1);
+  return date;
+}
+
+// Test
+console.log(yesterday('Nov 15, 2014').toString());
+
+
+
+
+#code 97--------------------------------
+
+
+function max_date(dates) {
+  return new Date(Math.max(...dates.map(d => new Date(d)))).toISOString().slice(0, 10).replace(/-/g, '/');
+}
+
+
+
+
+code 98----------------------------
+function min_date(dates) {
+  return new Date(Math.min(...dates.map(d => new Date(d)))).toISOString().slice(0, 10).replace(/-/g, '/');
+}
+
+// Test
+console.log(min_date(['2015/02/01', '2015/02/02', '2015/01/03'])); // "2015/01/03"
+
+
+code 99
+------------------------------
+function timeConvert(minutes) {
+  const hours = Math.floor(minutes / 60);
+  const mins = minutes % 60;
+  return `${minutes} minutes = ${hours} hour(s) and ${mins} minute(s).`;
+}
+
+
+code 100------------------------
+
+function days_of_a_year(year) {
+  return ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) ? 366 : 365;
+}
+
+code 101-----------------------
+
+function quarter_of_the_year(date) {
+  return Math.floor(date.getMonth() / 3) + 1;
+}
+
+
+code 102----------------------------
+
+function days_passed(date) {
+  const start = new Date(date.getFullYear(), 0, 1);
+  const diff = date - start;
+  return Math.floor(diff / (1000 * 60 * 60 * 24)) + 1;
+}
+
+
+code 103--------------------------------
+
+function unix_to_time(unixTimestamp) {
+  const date = new Date(unixTimestamp * 1000);
+  return date.toLocaleTimeString();
+}
+
+code 104---------------------------------
+function calculate_age(birthDate) {
+  const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const m = today.getMonth() - birthDate.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+  }
+  return age;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
