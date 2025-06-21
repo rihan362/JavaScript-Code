@@ -1819,6 +1819,341 @@ function ISO_numeric_date(date) {
 }
 
 
+code 109------------------------
+
+function ISO8601_week_no(date) {
+  const tmp = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+  const dayNum = tmp.getUTCDay() || 7;
+  tmp.setUTCDate(tmp.getUTCDate() + 4 - dayNum);
+  const yearStart = new Date(Date.UTC(tmp.getUTCFullYear(), 0, 1));
+  return Math.ceil((((tmp - yearStart) / 86400000) + 1) / 7);
+}
+
+// Test
+console.log(ISO8601_week_no(new Date(2015, 10, 1))); // 44
+
+
+#code 110
+
+--------------------------------
+
+function english_ordinal_suffix(date) {
+  const day = date.getDate();
+  if (day > 3 && day < 21) return day + 'th';
+  switch (day % 10) {
+    case 1: return day + 'st';
+    case 2: return day + 'nd';
+    case 3: return day + 'rd';
+    default: return day + 'th';
+  }
+}
+#code 111
+-----------------
+function ISO8601_week_no(date) {
+  const tmp = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+  const dayNum = tmp.getUTCDay() || 7;
+  tmp.setUTCDate(tmp.getUTCDate() + 4 - dayNum);
+  const yearStart = new Date(Date.UTC(tmp.getUTCFullYear(), 0, 1));
+  return Math.ceil((((tmp - yearStart) / 86400000) + 1) / 7);
+}
+
+// Test
+console.log(ISO8601_week_no(new Date(2015, 10, 1))); // 44
+
+
+#code 112
+-----------------------
+
+function full_month(dt) {
+  return dt.toLocaleString('en-us', { month: 'long' });
+}
+
+console.log(full_month(new Date(2015, 10, 1))); // "November"
+
+
+code 113
+---------------------
+
+function short_months(dt) {
+  return dt.toLocaleString('en-us', { month: 'short' });
+}
+
+console.log(short_months(new Date(2015, 10, 1))); // "Nov"
+
+
+
+code 114
+-------------------------
+
+function full_year(dt) {
+  return dt.getFullYear();
+}
+
+console.log(full_year(new Date(2015, 10, 1))); // 2015
+
+
+code 115---------------------
+
+function sort_year(dt) {
+  return String(dt.getFullYear()).slice(-2);
+}
+
+
+code 116-------------------
+
+function am_pm_lowercase(dt) {
+  return dt.getHours() >= 12 ? 'pm' : 'am';
+}
+
+function am_pm_uppercase(dt) {
+  return dt.getHours() >= 12 ? 'PM' : 'AM';
+}
+
+let dt = new Date(1989, 10, 1, 13);
+
+
+code 117---------------------
+
+function diff_hours(dt1, dt2) {
+  return Math.floor((dt2 - dt1) / (1000 * 60 * 60));
+}
+
+let d1 = new Date("October 13, 2014 08:11:00");
+
+code 118
+------------------------
+
+function diff_minutes(dt1, dt2) {
+  return Math.floor((dt2 - dt1) / (1000 * 60));
+}
+
+code 119-------------
+
+function add_months(date, months) {
+  const newDate = new Date(date);
+  newDate.setMonth(date.getMonth() + months);
+  return newDate;
+}
+
+console.log(add_months(new Date(2014, 10, 2), 10).toString());
+code 120---------------------------
+
+function add_weeks(date, weeks) {
+  const newDate = new Date(date);
+  newDate.setDate(date.getDate() + weeks * 7);
+  return newDate;
+}
+
+console.log(add_weeks(new Date(2014, 10, 2), 10).toString());
+
+code 121-----------------------------
+function add_years(date, years) {
+  const newDate = new Date(date);
+  newDate.setFullYear(date.getFullYear() + years);
+  return newDate;
+}
+
+
+
+code 122
+-------------------------------------
+
+function timezone_offset_in_seconds(dt) {
+  return -dt.getTimezoneOffset() * 60;
+}
+
+console.log(timezone_offset_in_seconds(new Date())); // 19800 for IST
+
+
+code 123
+--------------------------------------
+function diff_to_GMT(dt) {
+  const offset = -dt.getTimezoneOffset() / 60;
+  return offset >= 0 ? `+${offset.toFixed(3)}` : offset.toFixed(3);
+}
+
+console.log(diff_to_GMT(new Date())); // "+5.500"
+
+
+code 124
+------------------------------
+function daylights_savings(dt) {
+  const jan = new Date(dt.getFullYear(), 0, 1).getTimezoneOffset();
+  const jul = new Date(dt.getFullYear(), 6, 1).getTimezoneOffset();
+  return dt.getTimezoneOffset() < Math.max(jan, jul) ? 1 : 0;
+}
+
+console.log(daylights_savings(new Date())); // 0 or 1
+
+code 125
+----------------------------------------
+
+function timezone_name(dt) {
+  return dt.toLocaleTimeString('en-us', { timeZoneName: 'long' }).split(' ').slice(2).join(' ');
+}
+
+code 126
+----------------------------
+function seconds_with_leading_zeros(dt) {
+  return String(dt.getSeconds()).padStart(2, '0');
+}
+
+code 127
+-------------------------------------
+
+function minutes_with_leading_zeros(dt) {
+  return String(dt.getMinutes()).padStart(2, '0');
+}
+
+console.log(minutes_with_leading_zeros(new Date(1989, 10, 1))); // "00"
+
+code 128
+--------------------------
+function hours_without_zeroes(dt) {
+  return dt.getHours();
+}
+
+console.log(hours_without_zeroes(new Date(1989, 10, 1)));
+
+
+code 129
+--------------------------
+function internet_time(dt) {
+  const UTC = dt.getUTCHours() * 3600 + dt.getUTCMinutes() * 60 + dt.getUTCSeconds();
+  return Math.floor(((UTC + 3600) % 86400) / 86.4); // UTC+1 and 1 beat = 86.4 seconds
+}
+
+console.log(internet_time(new Date(1989, 10, 1)));
+
+
+code 130
+--------------------------------
+function diff_weeks(dt1, dt2) {
+  const oneWeek = 1000 * 60 * 60 * 24 * 7;
+  const diff = Math.abs(dt2 - dt1);
+  return Math.floor(diff / oneWeek);
+}
+
+let dt1 = new Date("June 13, 2014 08:11:00");
+let dt2 = new Date("October 19, 2014 11:13:00");
+console.log(diff_weeks(dt1, dt2)); // 18
+
+
+
+#code 131
+
+--------------------------------
+
+
+function diff_months(dt1, dt2) {
+  let years = dt2.getFullYear() - dt1.getFullYear();
+  let months = dt2.getMonth() - dt1.getMonth();
+  return years * 12 + months;
+}
+
+console.log(diff_months(dt1, dt2)); // 5
+
+
+code 132-------------------------
+
+function diff_years(dt1, dt2) {
+  return dt2.getFullYear() - dt1.getFullYear();
+}
+
+let dt3 = new Date("October 19, 2017 11:13:00");
+console.log(diff_years(dt1, dt3)); // 3
+
+code 133
+----------------------------
+function week_start_date(date) {
+  const day = date.getDay(); // Sunday = 0
+  const diff = date.getDate() - day;
+  return new Date(date.setDate(diff));
+}
+
+code 134
+-------------------------
+function week_end_date(date) {
+  const day = date.getDay();
+  const diff = date.getDate() + (6 - day);
+  return new Date(date.setDate(diff));
+}
+
+console.log(week_end_date(new Date("June 19, 2025"))); // End of week (Saturday)
+
+
+
+code 135
+----------------------------
+function month_end_date(date) {
+  return new Date(date.getFullYear(), date.getMonth() + 1, 0);
+}
+
+console.log(month_end_date(new Date("June 19, 2025"))); // June 30, 2025
+
+
+code 136
+----------------------------
+function month_start_date(date) {
+  return new Date(date.getFullYear(), date.getMonth(), 1);
+}
+
+console.log(month_start_date(new Date("June 19, 2025"))); // June 1, 2025
+
+
+code 137
+-------------------------------
+function is_string(input) {
+  return typeof input === 'string';
+}
+
+console.log(is_string('w3resource')); // true  
+console.log(is_string([1, 2, 4, 0]));  // false
+
+
+
+code 138
+-------------------------------
+
+function is_Blank(input) {
+  return input === '';
+}
+
+console.log(is_Blank(''));     // true  
+console.log(is_Blank('abc'));  // false
+
+
+code 139
+----------------------------------
+
+function string_to_array(str) {
+  return str.trim().split(" ");
+}
+
+console.log(string_to_array("Robin Singh")); // ["Robin", "Singh"]
+
+
+code 140
+--------------------
+function truncate_string(str, num) {
+  return str.slice(0, num);
+}
+
+console.log(truncate_string("Robin Singh", 4)); // "Robi"
+
+code 141
+----------------------------
+
+
+
+
+
+
+
+  
+
+
+
 
 
 
