@@ -3462,9 +3462,637 @@ code 221
 code 222-----------------------------
 
 
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Sort Library Objects</title>
+</head>
+<body>
+  <script>
+    const library = [
+      {
+        title: 'The Road Ahead',
+        author: 'Bill Gates',
+        libraryID: 1254
+      },
+      {
+        title: 'Walter Isaacson',
+        author: 'Steve Jobs',
+        libraryID: 4264
+      },
+      {
+        title: 'Mockingjay: The Final Book of The Hunger Games',
+        author: 'Suzanne Collins',
+        libraryID: 3245
+      }
+    ];
+
+    library.sort((a, b) => b.libraryID - a.libraryID);
+
+    console.log("Sorted Library:", library);
+    document.write("<pre>" + JSON.stringify(library, null, 2) + "</pre>");
+  </script>
+</body>
+</html>
+
+
+
+code 223------------------------------------
+
+
+function isBoolean(val) {
+  return typeof val === 'boolean';
+}
+
+
+code 224----------------------------
+
+
+function isError(val) {
+  return val instanceof Error;
+}
+
+
+
+
+code 225----------------------------
+
+function isNaNValue(val) {
+  return typeof val === 'number' && isNaN(val);
+}
+
+
+
+
+code 226-------------------------------
+
+
+function isNull(val) {
+  return val === null;
+}
+
+
+
+code 227---------------------------------
+
+
+function isRegExp(val) {
+  return val instanceof RegExp;
+}
+
+
+
+
+code 228----------------------------------
+
+
+
 
   
 
+function isPureJSONObject(val) {
+  return val && typeof val === 'object' && val.constructor === Object;
+}
+
+
+code 229----------------------
+
+function isChar(val) {
+  return typeof val === 'string' && val.length === 1;
+}
+
+code 230------------------
+
+function isSameType(a, b) {
+  return typeof a === typeof b;
+}
+
+
+code 231--------------------
+
+
+const favoriteMovie = {
+  title: "Puff the Magic Dragon",
+  duration: 30,
+  stars: ["Puff", "Jackie", "Living Sneezes"]
+};
+
+
+function printMovieInfo(movie) {
+  console.log(`${movie.title} lasts for ${movie.duration} minutes. Stars: ${movie.stars.join(", ")}.`);
+}
+
+
+printMovieInfo(favoriteMovie);
+
+code 232---------------------
+
+
+const books = [
+  {
+    title: "The Hobbit",
+    author: "J.R.R. Tolkien",
+    alreadyRead: true
+  },
+  {
+    title: "The Lord of the Rings",
+    author: "J.R.R. Tolkien",
+    alreadyRead: false
+  },
+  {
+    title: "1984",
+    author: "George Orwell",
+    alreadyRead: true
+  }
+];
+
+
+function logReadingList(bookList) {
+  bookList.forEach(book => {
+    const bookInfo = `"${book.title}" by ${book.author}`;
+    if (book.alreadyRead) {
+      console.log(`You already read ${bookInfo}`);
+    } else {
+      console.log(`You still need to read ${bookInfo}`);
+    }
+  });
+}
+
+logReadingList(books);
+
+
+
+
+
+
+code 233------------------------
+
+
+// Recipe object
+const recipe = {
+  title: "Mole",
+  servings: 2,
+  ingredients: ["cinnamon", "cumin", "cocoa"]
+};
+
+
+function printRecipeCard(recipe) {
+  console.log(recipe.title);
+  console.log(`Serves: ${recipe.servings}`);
+  console.log("Ingredients:");
+  recipe.ingredients.forEach(ingredient => {
+    console.log(ingredient);
+  });
+}
+
+
+printRecipeCard(recipe);
+
+
+code 234------------------------------
+
+function tellFortune(numChildren, partnerName, location, jobTitle) {
+  console.log(`You will be a ${jobTitle} in ${location}, and married to ${partnerName} with ${numChildren} kids.`);
+}
+
+
+tellFortune(2, "Alice", "Paris", "Designer");
+tellFortune(0, "Sam", "Tokyo", "Engineer");
+tellFortune(3, "Rina", "New York", "Chef");
+
+
+code 235----------------------------
+
+function calculateAge(birthYear, currentYear = new Date().getFullYear()) {
+  const age1 = currentYear - birthYear;
+  const age2 = age1 - 1;
+  console.log(`You are either ${age2} or ${age1}`);
+}
+
+// Call 3 times
+calculateAge(2000, 2025);
+calculateAge(1990);
+calculateAge(1985);
+
+
+
+
+code 236----------------------------
+
+function calculateSupply(age, amountPerDay) {
+  const maxAge = 90;
+  const totalNeeded = Math.round((maxAge - age) * 365 * amountPerDay);
+  console.log(`You will need ${totalNeeded} to last you until the ripe old age of ${maxAge}`);
+}
+
+// Call 3 times
+calculateSupply(25, 2.5);
+calculateSupply(40, 3);
+calculateSupply(18, 1.7);
+
+
+code 237--------------------------
+
+function calcCircumference(radius) {
+  const circumference = 2 * Math.PI * radius;
+  console.log(`The circumference is ${circumference.toFixed(2)}`);
+}
+
+function calcArea(radius) {
+  const area = Math.PI * Math.pow(radius, 2);
+  console.log(`The area is ${area.toFixed(2)}`);
+}
+
+// Example usage
+calcCircumference(5);
+calcArea(5);
+
+
+
+code 238----------------------------
+
+
+function celsiusToFahrenheit(celsius) {
+  const fahrenheit = (celsius * 9/5) + 32;
+  console.log(`${celsius}°C is ${fahrenheit.toFixed(2)}°F`);
+}
+
+// Example usage
+celsiusToFahrenheit(30);
+
+code 240---------------------------
+
+function fahrenheitToCelsius(fahrenheit) {
+  const celsius = (fahrenheit - 32) * 5/9;
+  console.log(`${fahrenheit}°F is ${celsius.toFixed(2)}°C`);
+}
+
+// Example usage
+fahrenheitToCelsius(86);  // 86°F is 30.00°C
+
+
+code 241------------------------
+
+function alphabetize(str) {
+  return str.split('').sort().join('');
+}
+
+// Example
+console.log(alphabetize("javascript"));  
+
+code 242-------------------------
+function uniqueChars(str) {
+  return [...new Set(str)].join('');
+}
+
+// Example
+console.log(uniqueChars("thequickbrownfoxjumpsoverthelazydog"));
+
+
+
+code 243-------------------------
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Time Converter</title>
+  <script>
+    function convertToUTC() {
+      const now = new Date();
+      alert("UTC Time: " + now.toUTCString());
+    }
+
+    function startTimer() {
+      setTimeout(() => {
+        const now = new Date();
+        document.getElementById("timerResult").textContent = now.toLocaleString();
+      }, 3000); // 3 seconds delay
+    }
+  </script>
+</head>
+<body>
+  <button onclick="convertToUTC()">Convert to UTC</button>
+  <br><br>
+  <button onclick="startTimer()">Show Time After Delay</button>
+  <p id="timerResult"></p>
+</body>
+</html>
+
+
+
+
+code 246------------------------------
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Click</title>
+  <script>
+    function changeImage() {
+      document.getElementById("myImg").src = "https://via.placeholder.com/200x100/ff7f7f";
+    }
+  </script>
+</head>
+<body>
+  <img id="myImg" src="https://via.placeholder.com/200x100/87ceeb" onclick="changeImage()" alt="Click Me" />
+</body>
+</html>
+
+
+code 247---------------------------
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Insert Paragraph and Style Change</title>
+  <style>
+    .highlight {
+      color: white;
+      background-color: blue;
+      font-weight: bold;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<p id="para1">This is the first paragraph.</p>
+<p id="para2">This is the second paragraph.</p>
+
+<script>
+  // Create and insert new paragraph
+  const newPara = document.createElement("p");
+  newPara.textContent = "This is the inserted paragraph.";
+  newPara.id = "newPara";
+  document.body.insertBefore(newPara, document.getElementById("para2"));
+
+  // Event listeners to toggle style
+  newPara.addEventListener("mouseover", () => {
+    newPara.className = "highlight";
+  });
+
+  newPara.addEventListener("mouseout", () => {
+    newPara.className = "";
+  });
+</script>
+
+</body>
+</html>
+
+
+code 248----------------------------
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Slideshow</title>
+</head>
+<body>
+
+<img id="slide" src="https://via.placeholder.com/300?text=Image+1" width="300">
+<br>
+<button onclick="nextSlide()">Next</button>
+
+<script>
+  const images = [
+    "https://via.placeholder.com/300?text=Image+1",
+    "https://via.placeholder.com/300?text=Image+2",
+    "https://via.placeholder.com/300?text=Image+3",
+    "https://via.placeholder.com/300?text=Image+4",
+    "https://via.placeholder.com/300?text=Image+5"
+  ];
+  let index = 0;
+
+  function nextSlide() {
+    index = (index + 1) % images.length;
+    document.getElementById("slide").src = images[index];
+  }
+</script>
+
+</body>
+</html>
+
+
+code 249----------------------------------
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Slideshow with Back and Forward</title>
+</head>
+<body>
+
+<img id="slide" src="https://via.placeholder.com/300?text=Image+1" width="300">
+<br>
+<button id="backBtn" onclick="prevSlide()">Back</button>
+<button id="nextBtn" onclick="nextSlide()">Forward</button>
+
+<script>
+  const images = [
+    "https://via.placeholder.com/300?text=Image+1",
+    "https://via.placeholder.com/300?text=Image+2",
+    "https://via.placeholder.com/300?text=Image+3",
+    "https://via.placeholder.com/300?text=Image+4",
+    "https://via.placeholder.com/300?text=Image+5"
+  ];
+
+  let index = 0;
+  const slide = document.getElementById("slide");
+  const backBtn = document.getElementById("backBtn");
+  const nextBtn = document.getElementById("nextBtn");
+
+  function updateSlide() {
+    slide.src = images[index];
+    backBtn.style.display = index === 0 ? "none" : "inline";
+    nextBtn.style.display = index === images.length - 1 ? "none" : "inline";
+  }
+
+  function prevSlide() {
+    if (index > 0) {
+      index--;
+      updateSlide();
+    }
+  }
+
+  function nextSlide() {
+    if (index < images.length - 1) {
+      index++;
+      updateSlide();
+    }
+  }
+
+  updateSlide(); // Initial call
+</script>
+
+</body>
+</html>
+
+
+code 250-------------------------
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Marble Animation</title>
+  <style>
+    #marble {
+      position: relative;
+      width: 50px;
+      height: 50px;
+      background-color: red;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+
+<div id="marble"></div>
+
+<script>
+  let marble = document.getElementById("marble");
+  let pos = 0;
+  let direction = 1;
+  let animation;
+
+  function animate() {
+    pos += 5 * direction;
+    if (pos > 400 || pos < 0) direction *= -1;
+    marble.style.left = pos + "px";
+    animation = setTimeout(animate, 50);
+  }
+
+  marble.addEventListener("mouseover", () => clearTimeout(animation));
+  marble.addEventListener("mouseout", animate);
+
+  animate(); // Start animation
+</script>
+
+</body>
+</html>
+
+
+code 251----------------
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Document Info</title>
+</head>
+<body>
+
+<script>
+  document.write("<p>Browser Info: " + navigator.userAgent + "</p>");
+  document.write("<p>Screen Resolution: " + screen.width + "x" + screen.height + "</p>");
+  document.write("<p>Last Modified: " + document.lastModified + "</p>");
+</script>
+
+</body>
+</html>
+
+code 252-----------------
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hover Image Change</title>
+</head>
+<body>
+
+<img src="https://via.placeholder.com/200?text=Image+1" 
+     onmouseover="this.src='https://via.placeholder.com/200?text=Hovered+1'" 
+     onmouseout="this.src='https://via.placeholder.com/200?text=Image+1'">
+
+<img src="https://via.placeholder.com/200?text=Image+2" 
+     onmouseover="this.src='https://via.placeholder.com/200?text=Hovered+2'" 
+     onmouseout="this.src='https://via.placeholder.com/200?text=Image+2'">
+
+</body>
+</html>
+
+
+code 253---------------------------
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Signup Form</title>
+</head>
+<body>
+
+<form onsubmit="return validateForm()">
+  Name: <input type="text" id="name"><br>
+  Email: <input type="email" id="email"><br>
+  Password: <input type="password" id="password"><br>
+  <input type="submit" value="Sign Up">
+</form>
+
+<script>
+  function validateForm() {
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+
+    if (!name || !email || !password) {
+      alert("All fields are required!");
+      return false;
+    }
+    if (password.length < 6) {
+      alert("Password must be at least 6 characters!");
+      return false;
+    }
+    alert("Signup successful!");
+    return true;
+  }
+</script>
+
+</body>
+</html>
+
+
+code 256--------------------
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Visit Tracker</title>
+</head>
+<body>
+
+<p id="visitInfo"></p>
+
+<script>
+  function getCookie(name) {
+    const value = "; " + document.cookie;
+    const parts = value.split("; " + name + "=");
+    if (parts.length === 2) return parts.pop().split(";").shift();
+  }
+
+  function setCookie(name, value, days = 365) {
+    const d = new Date();
+    d.setTime(d.getTime() + (days*24*60*60*1000));
+    document.cookie = `${name}=${value}; expires=${d.toUTCString()}; path=/`;
+  }
+
+  let visits = parseInt(getCookie("visits") || "0");
+  let lastVisit = getCookie("lastVisit");
+
+  visits++;
+  setCookie("visits", visits);
+  const now = new Date();
+  setCookie("lastVisit", now.toString());
+
+  const message = visits === 1
+    ? "You have never visited before."
+    : `You have visited ${visits} times! Your last visit was on: ${lastVisit}`;
+
+  document.getElementById("visitInfo").textContent = message;
+</script>
+
+</body>
+</html>
 
 
 
