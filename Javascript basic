@@ -4055,3 +4055,45 @@ console.log(longestUniqueSubstring("abcbdeafg"));  // "cbdeafg"
 
 
 
+code 251
+----------------------
+<!DOCTYPE html>
+<html>
+<body>
+  <canvas id="myCanvas" width="200" height="200" style="border:1px solid #000000;"></canvas>
+
+  <script>
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+
+    ctx.beginPath();
+    ctx.moveTo(20, 180);   // Starting point (bottom-left)
+    ctx.lineTo(20, 20);    // Vertical side (left)
+    ctx.lineTo(180, 180);  // Base (bottom side)
+    ctx.closePath();       // Close triangle
+
+    ctx.stroke();          // Draw outline
+    ctx.fillStyle = "lightblue";
+    ctx.fill();            // Optional fill
+  </script>
+</body>
+</html>
+
+code 252---------------------
+
+function calculateSupply(currentAge, amountPerDay) {
+  const maxAge = 100;
+  const yearsRemaining = maxAge - currentAge;
+  const totalAmount = Math.round(amountPerDay * 365 * yearsRemaining);
+
+  console.log(`You will need ${totalAmount} units to last you until the ripe old age of ${maxAge}`);
+}
+
+calculateSupply(25, 2.5);
+calculateSupply(40, 1.2);
+calculateSupply(60, 0.85);
+
+
+
+
+
