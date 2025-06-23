@@ -1734,16 +1734,8 @@ function max_date(dates) {
 
 
 
-code 98----------------------------
-function min_date(dates) {
-  return new Date(Math.min(...dates.map(d => new Date(d)))).toISOString().slice(0, 10).replace(/-/g, '/');
-}
 
-// Test
-console.log(min_date(['2015/02/01', '2015/02/02', '2015/01/03'])); // "2015/01/03"
-
-
-code 99
+code 98
 ------------------------------
 function timeConvert(minutes) {
   const hours = Math.floor(minutes / 60);
@@ -1819,21 +1811,9 @@ function ISO_numeric_date(date) {
 }
 
 
-code 109------------------------
-
-function ISO8601_week_no(date) {
-  const tmp = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
-  const dayNum = tmp.getUTCDay() || 7;
-  tmp.setUTCDate(tmp.getUTCDate() + 4 - dayNum);
-  const yearStart = new Date(Date.UTC(tmp.getUTCFullYear(), 0, 1));
-  return Math.ceil((((tmp - yearStart) / 86400000) + 1) / 7);
-}
-
-// Test
-console.log(ISO8601_week_no(new Date(2015, 10, 1))); // 44
 
 
-#code 110
+#code 109
 
 --------------------------------
 
@@ -1847,21 +1827,9 @@ function english_ordinal_suffix(date) {
     default: return day + 'th';
   }
 }
-#code 111
------------------
-function ISO8601_week_no(date) {
-  const tmp = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
-  const dayNum = tmp.getUTCDay() || 7;
-  tmp.setUTCDate(tmp.getUTCDate() + 4 - dayNum);
-  const yearStart = new Date(Date.UTC(tmp.getUTCFullYear(), 0, 1));
-  return Math.ceil((((tmp - yearStart) / 86400000) + 1) / 7);
-}
-
-// Test
-console.log(ISO8601_week_no(new Date(2015, 10, 1))); // 44
 
 
-#code 112
+#code 110
 -----------------------
 
 function full_month(dt) {
@@ -1871,7 +1839,7 @@ function full_month(dt) {
 console.log(full_month(new Date(2015, 10, 1))); // "November"
 
 
-code 113
+code 111
 ---------------------
 
 function short_months(dt) {
@@ -1882,7 +1850,7 @@ console.log(short_months(new Date(2015, 10, 1))); // "Nov"
 
 
 
-code 114
+code 112
 -------------------------
 
 function full_year(dt) {
@@ -1892,14 +1860,14 @@ function full_year(dt) {
 console.log(full_year(new Date(2015, 10, 1))); // 2015
 
 
-code 115---------------------
+code 113---------------------
 
 function sort_year(dt) {
   return String(dt.getFullYear()).slice(-2);
 }
 
 
-code 116-------------------
+code 114-------------------
 
 function am_pm_lowercase(dt) {
   return dt.getHours() >= 12 ? 'pm' : 'am';
@@ -1912,7 +1880,7 @@ function am_pm_uppercase(dt) {
 let dt = new Date(1989, 10, 1, 13);
 
 
-code 117---------------------
+code 115---------------------
 
 function diff_hours(dt1, dt2) {
   return Math.floor((dt2 - dt1) / (1000 * 60 * 60));
@@ -1920,14 +1888,14 @@ function diff_hours(dt1, dt2) {
 
 let d1 = new Date("October 13, 2014 08:11:00");
 
-code 118
+code 116
 ------------------------
 
 function diff_minutes(dt1, dt2) {
   return Math.floor((dt2 - dt1) / (1000 * 60));
 }
 
-code 119-------------
+code 117-------------
 
 function add_months(date, months) {
   const newDate = new Date(date);
@@ -1936,7 +1904,7 @@ function add_months(date, months) {
 }
 
 console.log(add_months(new Date(2014, 10, 2), 10).toString());
-code 120---------------------------
+code 1128---------------------------
 
 function add_weeks(date, weeks) {
   const newDate = new Date(date);
@@ -1946,7 +1914,7 @@ function add_weeks(date, weeks) {
 
 console.log(add_weeks(new Date(2014, 10, 2), 10).toString());
 
-code 121-----------------------------
+code 119-----------------------------
 function add_years(date, years) {
   const newDate = new Date(date);
   newDate.setFullYear(date.getFullYear() + years);
@@ -1955,7 +1923,7 @@ function add_years(date, years) {
 
 
 
-code 122
+code 120
 -------------------------------------
 
 function timezone_offset_in_seconds(dt) {
@@ -1965,7 +1933,7 @@ function timezone_offset_in_seconds(dt) {
 console.log(timezone_offset_in_seconds(new Date())); // 19800 for IST
 
 
-code 123
+code 122
 --------------------------------------
 function diff_to_GMT(dt) {
   const offset = -dt.getTimezoneOffset() / 60;
@@ -2188,25 +2156,8 @@ function swapcase(str) {
 console.log(swapcase('AaBbc')); // "aAbBC"
 
 
-code 146
-------------------------
-
-function camelize(str) {
-  return str.replace(/(?:^\w|[A-Z]|\b\w|\s+)/g, (match, index) =>
-    index === 0 ? match.trim() : match.toUpperCase().trim()
-  ).replace(/\s+/g, '');
-}
 
 
-#code 147
-------------------------------------
-function uncamelize(str, sep = ' ') {
-  return str.replace(/([a-z])([A-Z])/g, `$1${sep}$2`).toLowerCase();
-}
-
-console.log(uncamelize('helloWorld'));        // "hello world"
-console.log(uncamelize('helloWorld','-'));    // "hello-world"
-console.log(uncamelize('helloWorld','_'));    // "hello_world"
 
 code 148
 ----------------------------------
@@ -2595,7 +2546,7 @@ code 187
 function isHexValue(val) {
   return /^0[xX][0-9a-fA-F]+$/.test(val);
 }
-
+   
 
 code 188------------------
 function isDomain(val) {
@@ -3082,90 +3033,9 @@ code 207
 </html>
 
 
-code 208---------------------------
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Draw Triangle</title>
-</head>
-<body>
-  <canvas id="canvas" width="300" height="200" style="border:1px solid #000"></canvas>
-  <script>
-    const canvas = document.getElementById("canvas");
-    const ctx = canvas.getContext("2d");
-
-    ctx.beginPath();
-    ctx.moveTo(50, 150);
-    ctx.lineTo(50, 50);
-    ctx.lineTo(150, 150);
-    ctx.closePath();
-
-    ctx.fillStyle = "orange";
-    ctx.fill();
-    ctx.stroke();
-  </script>
-</body>
-</html>
 
 
-code 209
----------------------------------
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Diagram using moveTo</title>
-</head>
-<body>
-  <canvas id="canvas" width="300" height="200" style="border:1px solid #000"></canvas>
-  <script>
-    const canvas = document.getElementById("canvas");
-    const ctx = canvas.getContext("2d");
 
-    ctx.beginPath();
-    ctx.moveTo(20, 20);
-    ctx.lineTo(280, 20);
-    ctx.moveTo(280, 20);
-    ctx.lineTo(280, 180);
-    ctx.moveTo(280, 180);
-    ctx.lineTo(20, 180);
-    ctx.moveTo(20, 180);
-    ctx.lineTo(20, 20);
-    ctx.stroke();
-  </script>
-</body>
-</html>
-
-
-code 210
-------------------------------
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Diagonal Gradient Circles</title>
-</head>
-<body>
-  <canvas id="canvas" width="300" height="300" style="border:1px solid #000"></canvas>
-  <script>
-    const canvas = document.getElementById("canvas");
-    const ctx = canvas.getContext("2d");
-
-    const steps = 6;
-    const radius = 20;
-    for (let i = 0; i < steps; i++) {
-      const gray = Math.floor((i / (steps - 1)) * 255);
-      ctx.beginPath();
-      ctx.arc(50 + i * 40, 50 + i * 40, radius, 0, 2 * Math.PI);
-      ctx.fillStyle = `rgb(${gray}, ${gray}, ${gray})`;
-      ctx.fill();
-      ctx.stroke();
-    }
-  </script>
-</body>
-</html>
 
 
 code 211
@@ -3782,7 +3652,7 @@ code 243-------------------------
 
 
 
-code 246------------------------------
+code 237------------------------------
 
 
 <!DOCTYPE html>
@@ -3801,7 +3671,7 @@ code 246------------------------------
 </html>
 
 
-code 247---------------------------
+code 238---------------------------
 
 
 <!DOCTYPE html>
@@ -3841,279 +3711,5 @@ code 247---------------------------
 
 </body>
 </html>
-
-
-code 248----------------------------
-
-
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Image Slideshow</title>
-</head>
-<body>
-
-<img id="slide" src="https://via.placeholder.com/300?text=Image+1" width="300">
-<br>
-<button onclick="nextSlide()">Next</button>
-
-<script>
-  const images = [
-    "https://via.placeholder.com/300?text=Image+1",
-    "https://via.placeholder.com/300?text=Image+2",
-    "https://via.placeholder.com/300?text=Image+3",
-    "https://via.placeholder.com/300?text=Image+4",
-    "https://via.placeholder.com/300?text=Image+5"
-  ];
-  let index = 0;
-
-  function nextSlide() {
-    index = (index + 1) % images.length;
-    document.getElementById("slide").src = images[index];
-  }
-</script>
-
-</body>
-</html>
-
-
-code 249----------------------------------
-
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Slideshow with Back and Forward</title>
-</head>
-<body>
-
-<img id="slide" src="https://via.placeholder.com/300?text=Image+1" width="300">
-<br>
-<button id="backBtn" onclick="prevSlide()">Back</button>
-<button id="nextBtn" onclick="nextSlide()">Forward</button>
-
-<script>
-  const images = [
-    "https://via.placeholder.com/300?text=Image+1",
-    "https://via.placeholder.com/300?text=Image+2",
-    "https://via.placeholder.com/300?text=Image+3",
-    "https://via.placeholder.com/300?text=Image+4",
-    "https://via.placeholder.com/300?text=Image+5"
-  ];
-
-  let index = 0;
-  const slide = document.getElementById("slide");
-  const backBtn = document.getElementById("backBtn");
-  const nextBtn = document.getElementById("nextBtn");
-
-  function updateSlide() {
-    slide.src = images[index];
-    backBtn.style.display = index === 0 ? "none" : "inline";
-    nextBtn.style.display = index === images.length - 1 ? "none" : "inline";
-  }
-
-  function prevSlide() {
-    if (index > 0) {
-      index--;
-      updateSlide();
-    }
-  }
-
-  function nextSlide() {
-    if (index < images.length - 1) {
-      index++;
-      updateSlide();
-    }
-  }
-
-  updateSlide(); // Initial call
-</script>
-
-</body>
-</html>
-
-
-code 250-------------------------
-
-
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Marble Animation</title>
-  <style>
-    #marble {
-      position: relative;
-      width: 50px;
-      height: 50px;
-      background-color: red;
-      border-radius: 50%;
-    }
-  </style>
-</head>
-<body>
-
-<div id="marble"></div>
-
-<script>
-  let marble = document.getElementById("marble");
-  let pos = 0;
-  let direction = 1;
-  let animation;
-
-  function animate() {
-    pos += 5 * direction;
-    if (pos > 400 || pos < 0) direction *= -1;
-    marble.style.left = pos + "px";
-    animation = setTimeout(animate, 50);
-  }
-
-  marble.addEventListener("mouseover", () => clearTimeout(animation));
-  marble.addEventListener("mouseout", animate);
-
-  animate(); // Start animation
-</script>
-
-</body>
-</html>
-
-
-code 251----------------
-
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Document Info</title>
-</head>
-<body>
-
-<script>
-  document.write("<p>Browser Info: " + navigator.userAgent + "</p>");
-  document.write("<p>Screen Resolution: " + screen.width + "x" + screen.height + "</p>");
-  document.write("<p>Last Modified: " + document.lastModified + "</p>");
-</script>
-
-</body>
-</html>
-
-code 252-----------------
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Hover Image Change</title>
-</head>
-<body>
-
-<img src="https://via.placeholder.com/200?text=Image+1" 
-     onmouseover="this.src='https://via.placeholder.com/200?text=Hovered+1'" 
-     onmouseout="this.src='https://via.placeholder.com/200?text=Image+1'">
-
-<img src="https://via.placeholder.com/200?text=Image+2" 
-     onmouseover="this.src='https://via.placeholder.com/200?text=Hovered+2'" 
-     onmouseout="this.src='https://via.placeholder.com/200?text=Image+2'">
-
-</body>
-</html>
-
-
-code 253---------------------------
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Signup Form</title>
-</head>
-<body>
-
-<form onsubmit="return validateForm()">
-  Name: <input type="text" id="name"><br>
-  Email: <input type="email" id="email"><br>
-  Password: <input type="password" id="password"><br>
-  <input type="submit" value="Sign Up">
-</form>
-
-<script>
-  function validateForm() {
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
-
-    if (!name || !email || !password) {
-      alert("All fields are required!");
-      return false;
-    }
-    if (password.length < 6) {
-      alert("Password must be at least 6 characters!");
-      return false;
-    }
-    alert("Signup successful!");
-    return true;
-  }
-</script>
-
-</body>
-</html>
-
-
-code 256--------------------
-
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Visit Tracker</title>
-</head>
-<body>
-
-<p id="visitInfo"></p>
-
-<script>
-  function getCookie(name) {
-    const value = "; " + document.cookie;
-    const parts = value.split("; " + name + "=");
-    if (parts.length === 2) return parts.pop().split(";").shift();
-  }
-
-  function setCookie(name, value, days = 365) {
-    const d = new Date();
-    d.setTime(d.getTime() + (days*24*60*60*1000));
-    document.cookie = `${name}=${value}; expires=${d.toUTCString()}; path=/`;
-  }
-
-  let visits = parseInt(getCookie("visits") || "0");
-  let lastVisit = getCookie("lastVisit");
-
-  visits++;
-  setCookie("visits", visits);
-  const now = new Date();
-  setCookie("lastVisit", now.toString());
-
-  const message = visits === 1
-    ? "You have never visited before."
-    : `You have visited ${visits} times! Your last visit was on: ${lastVisit}`;
-
-  document.getElementById("visitInfo").textContent = message;
-</script>
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
