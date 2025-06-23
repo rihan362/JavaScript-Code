@@ -3033,6 +3033,10 @@ code 207
 </html>
 
 
+code 208----------------------------
+
+
+
 
 
 
@@ -3416,11 +3420,6 @@ function isRegExp(val) {
 
 code 228----------------------------------
 
-
-
-
-  
-
 function isPureJSONObject(val) {
   return val && typeof val === 'object' && val.constructor === Object;
 }
@@ -3713,3 +3712,349 @@ code 238---------------------------
 </html>
 
 code 239-----------------------------------
+
+function insert_Row() {
+  const table = document.getElementById("sampleTable");    
+  const newRow = table.insertRow(0);                         
+  
+  const cell1 = newRow.insertCell(0);                        
+  const cell2 = newRow.insertCell(1);                       
+  
+  cell1.innerHTML = "New Cell1";                            
+  cell2.innerHTML = "New Cell2";                             
+}
+
+code 240------------------------------
+
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>Change Cell Content</title></head>
+<body>
+
+<table id="myTable" border="1">
+  <tr><td>Row1 cell1</td><td>Row1 cell2</td></tr>
+  <tr><td>Row2 cell1</td><td>Row2 cell2</td></tr>
+  <tr><td>Row3 cell1</td><td>Row3 cell2</td></tr>
+</table>
+
+<br>
+<form>
+  <input type="button" onclick="changeContent(1, 1, 'Updated!')" value="Change content">
+</form>
+
+<script>
+function changeContent(row, col, text) {
+  const table = document.getElementById("myTable");
+  table.rows[row].cells[col].innerHTML = text;
+}
+</script>
+
+</body>
+</html>
+
+
+code 241---------------------------------------------gradient circle
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>White to Black Diagonal Circles</title>
+</head>
+<body>
+<canvas id="myCanvas" width="500" height="500" style="border:1px solid #000;"></canvas>
+
+<script>
+function drawDiagonalCircles() {
+  const canvas = document.getElementById("myCanvas");
+  const ctx = canvas.getContext("2d");
+
+  const numCircles = 10;           // Total circles to draw
+  const gap = 40;                  // Distance between circles
+  const radius = 15;               // Circle radius
+
+  for (let i = 0; i < numCircles; i++) {
+    // Calculate grayscale value from white (255) to black (0)
+    const grayValue = 255 - Math.floor((255 / (numCircles - 1)) * i);
+    const color = `rgb(${grayValue},${grayValue},${grayValue})`;
+
+    const x = 50 + i * gap;
+    const y = 50 + i * gap;
+
+    ctx.beginPath();
+    ctx.arc(x, y, radius, 0, Math.PI * 2);
+    ctx.fillStyle = color;
+    ctx.fill();
+    ctx.stroke();
+  }
+}
+
+drawDiagonalCircles();
+</script>
+</body>
+</html>
+
+
+code 242-------------------------------
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .marble {
+      width: 50px;
+      height: 50px;
+      background: red;
+      border-radius: 50%;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <div class="marble" id="marble"></div>
+
+  <script>
+    let marble = document.getElementById("marble");
+    let position = 0;
+    let animation;
+
+    function moveMarble() {
+      position += 5;
+      if (position > window.innerWidth - 50) position = 0;
+      marble.style.left = position + "px";
+      animation = setTimeout(moveMarble, 50);
+    }
+
+    marble.addEventListener("mouseover", () => clearTimeout(animation));
+    marble.addEventListener("mouseout", () => moveMarble());
+
+    moveMarble();
+  </script>
+</body>
+</html>
+
+
+
+code 243-----------------------------
+
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+    function validateForm() {
+      let name = document.forms["signup"]["username"].value;
+      let email = document.forms["signup"]["email"].value;
+      if (name === "" || email === "") {
+        alert("Name and Email must be filled out");
+        return false;
+      }
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <form name="signup" onsubmit="return validateForm()">
+    Username: <input type="text" name="username"><br>
+    Email: <input type="email" name="email"><br>
+    <input type="submit" value="Signup">
+  </form>
+</body>
+</html>
+
+
+code 244---------------------------------------------
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+    function getCookie(name) {
+      let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+      return match ? match[2] : null;
+    }
+
+    function setCookie(name, value, days) {
+      let expires = new Date();
+      expires.setTime(expires.getTime() + (days * 24 * 60 * 60 * 1000));
+      document.cookie = name + "=" + value + ";expires=" + expires.toUTCString() + ";path=/";
+    }
+
+    window.onload = function () {
+      let visits = parseInt(getCookie("visits")) || 0;
+      let lastVisit = getCookie("lastVisit");
+
+      visits++;
+      setCookie("visits", visits, 365);
+      let now = new Date();
+      setCookie("lastVisit", now.toString(), 365);
+
+      document.getElementById("info").innerHTML =
+        visits === 1 ? "You have never visited before!" :
+        "You have visited " + visits + " times.<br>Last visited on: " + lastVisit;
+    }
+  </script>
+</head>
+<body>
+  <div id="info"></div>
+</body>
+</html>
+
+
+
+code 245-------------------------------
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mad Libs Game</title>
+</head>
+<body>
+  <script>
+    // Prompt the user for their name
+    let name = prompt("Enter your name:");
+
+    // Prompt for 5 words
+    let word1 = prompt("Enter a noun:");
+    let word2 = prompt("Enter a verb:");
+    let word3 = prompt("Enter an adjective:");
+    let word4 = prompt("Enter another noun:");
+    let word5 = prompt("Enter an adverb:");
+
+    // Prompt for a color
+    let color = prompt("Enter a color (name or hex value):");
+
+    // Highlighted word styling
+    function highlight(word) {
+      return `<div style="color:${color}; display:inline; font-weight:bold;">${word}</div>`;
+    }
+
+    // Display the story using document.write
+    document.write(`<h2>Hello, ${name}!</h2>`);
+    document.write(`<p>Once upon a time, a ${highlight(word1)} decided to ${highlight(word2)} through the jungle.</p>`);
+    document.write(`<p>It was a ${highlight(word3)} day, perfect for an adventure with its pet ${highlight(word4)}.</p>`);
+    document.write(`<p>They both moved ${highlight(word5)} under the bright sun, laughing and playing all the way.</p>`);
+    document.write(`<p>The end!</p>`);
+  </script>
+</body>
+</html>
+
+
+code 246--------------------------
+
+function thousands_separators(num) {
+  return num.toLocaleString();
+}
+
+
+console.log(thousands_separators(123456789));  
+
+code 247--------------------------
+
+function isArmstrongNumber(num) {
+  let sum = 0;
+  let temp = num;
+
+  while (temp > 0) {
+    let digit = temp % 10;
+    sum += Math.pow(digit, 3);
+    temp = Math.floor(temp / 10);
+  }
+
+  return sum === num;
+}
+
+function findArmstrongNumbers() {
+  let result = [];
+
+  for (let i = 100; i <= 999; i++) {
+    if (isArmstrongNumber(i)) {
+      result.push(i);
+    }
+  }
+
+  return result;
+}
+
+console.log("Armstrong Numbers (3-digit):", findArmstrongNumbers());
+
+
+
+code 249-----------------------------
+
+function longestPalindrome(str) {
+  if (str.length < 1) return "";
+
+  let start = 0, end = 0;
+
+  function expandAroundCenter(left, right) {
+    while (left >= 0 && right < str.length && str[left] === str[right]) {
+      left--;
+      right++;
+    }
+    return [left + 1, right - 1]; // boundaries of the palindrome
+  }
+
+  for (let i = 0; i < str.length; i++) {
+    let [left1, right1] = expandAroundCenter(i, i);     // odd-length
+    let [left2, right2] = expandAroundCenter(i, i + 1); // even-length
+
+    if (right1 - left1 > end - start) {
+      start = left1;
+      end = right1;
+    }
+
+    if (right2 - left2 > end - start) {
+      start = left2;
+      end = right2;
+    }
+  }
+
+  return str.slice(start, end + 1);
+}
+
+"
+console.log(longestPalindrome("noonmadam"));     // "noon" or "madam"
+
+
+code 250-------------------------
+
+
+function longestUniqueSubstring(str) {
+  let start = 0;
+  let maxLength = 0;
+  let maxSubstring = "";
+  let seen = new Map(); // stores character and its latest index
+
+  for (let end = 0; end < str.length; end++) {
+    let char = str[end];
+
+    // If the character is repeated, move the start pointer
+    if (seen.has(char) && seen.get(char) >= start) {
+      start = seen.get(char) + 1;
+    }
+
+    seen.set(char, end);
+
+    // Update max substring if current window is larger
+    if (end - start + 1 > maxLength) {
+      maxLength = end - start + 1;
+      maxSubstring = str.substring(start, end + 1);
+    }
+  }
+
+  return maxSubstring;
+}
+
+// ✅ Test Cases:
+console.log(longestUniqueSubstring("abcabcbb"));  // "abc"
+console.log(longestUniqueSubstring("bbbbb"));     // "b"
+console.log(longestUniqueSubstring("pwwkew"));     // "wke"
+console.log(longestUniqueSubstring("abcdef"));     // "abcdef"
+console.log(longestUniqueSubstring("abcbdeafg"));  // "cbdeafg"
+
+
+
+
