@@ -4048,10 +4048,7 @@ function longestUniqueSubstring(str) {
   return maxSubstring;
 }
 
-// ✅ Test Cases:
-console.log(longestUniqueSubstring("abcabcbb"));  // "abc"
-console.log(longestUniqueSubstring("bbbbb"));     // "b"
-console.log(longestUniqueSubstring("pwwkew"));     // "wke"
+
 console.log(longestUniqueSubstring("abcdef"));     // "abcdef"
 console.log(longestUniqueSubstring("abcbdeafg"));  // "cbdeafg"
 
